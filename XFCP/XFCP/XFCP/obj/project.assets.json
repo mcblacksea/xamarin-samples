@@ -613,11 +613,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\proj\\test\\xamarin\\XFCP\\XFCP\\XFCP\\XFCP.csproj",
+      "projectUniqueName": "D:\\proj\\test\\xamarin\\xamarin-samples\\XFCP\\XFCP\\XFCP\\XFCP.csproj",
       "projectName": "XFCP",
-      "projectPath": "D:\\proj\\test\\xamarin\\XFCP\\XFCP\\XFCP\\XFCP.csproj",
+      "projectPath": "D:\\proj\\test\\xamarin\\xamarin-samples\\XFCP\\XFCP\\XFCP\\XFCP.csproj",
       "packagesPath": "C:\\Users\\altec\\.nuget\\packages\\",
-      "outputPath": "D:\\proj\\test\\xamarin\\XFCP\\XFCP\\XFCP\\obj\\",
+      "outputPath": "D:\\proj\\test\\xamarin\\xamarin-samples\\XFCP\\XFCP\\XFCP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

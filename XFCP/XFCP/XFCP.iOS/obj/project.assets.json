@@ -1093,11 +1093,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\proj\\test\\xamarin\\XFCP\\XFCP\\XFCP.iOS\\XFCP.iOS.csproj",
+      "projectUniqueName": "D:\\proj\\test\\xamarin\\xamarin-samples\\XFCP\\XFCP\\XFCP.iOS\\XFCP.iOS.csproj",
       "projectName": "XFCP.iOS",
-      "projectPath": "D:\\proj\\test\\xamarin\\XFCP\\XFCP\\XFCP.iOS\\XFCP.iOS.csproj",
+      "projectPath": "D:\\proj\\test\\xamarin\\xamarin-samples\\XFCP\\XFCP\\XFCP.iOS\\XFCP.iOS.csproj",
       "packagesPath": "C:\\Users\\altec\\.nuget\\packages\\",
-      "outputPath": "D:\\proj\\test\\xamarin\\XFCP\\XFCP\\XFCP.iOS\\obj\\",
+      "outputPath": "D:\\proj\\test\\xamarin\\xamarin-samples\\XFCP\\XFCP\\XFCP.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1119,8 +1119,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "D:\\proj\\test\\xamarin\\XFCP\\XFCP\\XFCP\\XFCP.csproj": {
-              "projectPath": "D:\\proj\\test\\xamarin\\XFCP\\XFCP\\XFCP\\XFCP.csproj"
+            "D:\\proj\\test\\xamarin\\xamarin-samples\\XFCP\\XFCP\\XFCP\\XFCP.csproj": {
+              "projectPath": "D:\\proj\\test\\xamarin\\xamarin-samples\\XFCP\\XFCP\\XFCP\\XFCP.csproj"
             }
           }
         }
