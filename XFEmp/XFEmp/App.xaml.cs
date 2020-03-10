@@ -10,7 +10,7 @@ namespace XFEmp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new DevPage();
         }
 
         protected override void OnStart()
