@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XFEmp.DevPage">
-    <StackLayout BindingContext="{x:Reference slider}" HorizontalOptions="Center" VerticalOptions="Center" >
+    <StackLayout BindingContext="{x:Reference slider}" HorizontalOptions="Center" >
         <BoxView Color="Green" Opacity="{Binding Value}"/>
         <Label Text="{Binding Value, StringFormat='Value is {0:F2}'}" 
                Opacity="{Binding Value}"
