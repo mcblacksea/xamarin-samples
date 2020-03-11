@@ -25,9 +25,5 @@ namespace XFEmp
             //    Text = "Hello"
             //};
         }
-        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            label.Text = $"Value is {e.NewValue:F2}";
-        }
     }
 }
