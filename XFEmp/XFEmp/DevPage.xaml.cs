@@ -15,6 +15,8 @@ namespace XFEmp
         public DevPage()
         {
             InitializeComponent();
+            slider.Value = 0.5;
+
             // Content in code:
             //Content = new Label()
             //{
@@ -23,6 +25,9 @@ namespace XFEmp
             //    Text = "Hello"
             //};
         }
-        
+        private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            label.Text = $"Value is {e.NewValue:F2}";
+        }
     }
 }

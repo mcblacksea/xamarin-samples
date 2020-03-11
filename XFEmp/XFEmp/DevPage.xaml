@@ -5,5 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XFEmp.DevPage">
-    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Hello Dev"/>
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+        <Label Text="Hello Dev" x:Name="label"/>
+        <Slider BackgroundColor="AliceBlue" ValueChanged="Slider_ValueChanged" x:Name="slider"/>
+    </StackLayout>
 </ContentPage>
