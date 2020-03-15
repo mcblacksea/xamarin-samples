@@ -5,11 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XFEmp.DevPage">
-    <StackLayout BindingContext="{x:Reference slider}" HorizontalOptions="Center" >
+    <StackLayout BindingContext="{x:Reference slider}" Padding="40" >
         <BoxView Color="Green" Opacity="{Binding Value}"/>
         <Label Text="{Binding Value, StringFormat='Value is {0:F2}'}" 
                Opacity="{Binding Value}"
                x:Name="label"/>
-        <Slider BackgroundColor="AliceBlue" x:Name="slider"/>
+        <Slider BackgroundColor="Beige" x:Name="slider"/>
     </StackLayout>
 </ContentPage>

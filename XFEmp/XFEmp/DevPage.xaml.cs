@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace XFEmp
@@ -21,7 +15,7 @@ namespace XFEmp
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
-                    Padding = new Thickness(0, 20, 0, 0);
+                    Padding = new Thickness(0, 30, 0, 0);
                     break;
                 case Device.Android:
                     Padding = new Thickness(10, 20, 0, 0);
