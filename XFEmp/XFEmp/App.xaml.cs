@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace XFEmp
+namespace XF
 {
     public partial class App : Application
     {

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFEmp.Android", "XFEmp.Android\XFEmp.Android.csproj", "{F03D4064-92E4-4B61-BB99-A27AE1EFDEA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XF.Android", "XFEmp.Android\XF.Android.csproj", "{F03D4064-92E4-4B61-BB99-A27AE1EFDEA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFEmp.iOS", "XFEmp.iOS\XFEmp.iOS.csproj", "{7BF8F016-E900-4D3E-9F32-6FEA75050D33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XF.iOS", "XFEmp.iOS\XF.iOS.csproj", "{7BF8F016-E900-4D3E-9F32-6FEA75050D33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XFEmp", "XFEmp\XFEmp.csproj", "{87E3D166-FC2D-4A64-AA24-A4960D6902BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XF", "XFEmp\XF.csproj", "{87E3D166-FC2D-4A64-AA24-A4960D6902BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

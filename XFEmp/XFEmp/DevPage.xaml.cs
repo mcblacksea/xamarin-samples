@@ -1,7 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace XFEmp
+namespace XF
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DevPage : ContentPage

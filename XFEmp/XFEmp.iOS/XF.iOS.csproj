@@ -127,9 +127,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\XFEmp\XFEmp.csproj">
-      <Project>{89367DC6-95A3-44B2-8501-B47D3B34E9D5}</Project>
-      <Name>XFEmp</Name>
+    <ProjectReference Include="..\XFEmp\XF.csproj">
+      <Project>{87E3D166-FC2D-4A64-AA24-A4960D6902BE}</Project>
+      <Name>XF</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
