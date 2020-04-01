@@ -7,8 +7,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>XFEmp.Droid</RootNamespace>
-    <AssemblyName>XFEmp.Android</AssemblyName>
+    <RootNamespace>XF.Droid</RootNamespace>
+    <AssemblyName>XF.Android</AssemblyName>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -88,9 +88,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XFEmp\XF.csproj">
-      <Project>{87E3D166-FC2D-4A64-AA24-A4960D6902BE}</Project>
-      <Name>XF</Name>
+    <ProjectReference Include="..\XF.PCL\XF.PCL.csproj">
+      <Project>{02d0d924-2eed-4198-9873-ce5a174fb279}</Project>
+      <Name>XF.PCL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
