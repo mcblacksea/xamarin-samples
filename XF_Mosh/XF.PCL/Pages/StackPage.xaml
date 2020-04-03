@@ -12,9 +12,10 @@
                  Padding="40"
                  Spacing="20"
                  VerticalOptions="Center"
-                 HorizontalOptions="Center">
+                 HorizontalOptions="Center"
+              >
         <StackLayout>
-            <Image Source="https://via.placeholder.com/10/FFFF00" />
+            <Image x:Name="image" Source="https://via.placeholder.com/150"/>
             <Label Text="Мама" FontAttributes="Bold" BackgroundColor="Silver"/>
         </StackLayout>
         <Label Text="моет" FontAttributes="Bold" BackgroundColor="Silver"/>
