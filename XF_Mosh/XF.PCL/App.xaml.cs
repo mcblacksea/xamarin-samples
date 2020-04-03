@@ -1,6 +1,5 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
+using XF.PCL.Pages;
 
 namespace XF
 {
@@ -10,7 +9,7 @@ namespace XF
         {
             InitializeComponent();
 
-            MainPage = new DevPage();
+            MainPage = new StackPage();
         }
 
         protected override void OnStart()
