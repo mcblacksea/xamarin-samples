@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+            Padding="0, 20, 0, 0"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XF.PCL.Pages.StackPage">
+    <StackLayout 
+                 Orientation="Horizontal"
+                 Padding="40"
+                 Spacing="20"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center"
+              >
+        <StackLayout>
+            <Image x:Name="image" Source="https://via.placeholder.com/150"/>
+            <Label Text="Мама" FontAttributes="Bold" BackgroundColor="Silver"/>
+        </StackLayout>
+        <Label Text="моет" FontAttributes="Bold" BackgroundColor="Silver"/>
+        <Label Text="раму" FontAttributes="Bold" BackgroundColor="Silver"/>
+    </StackLayout>
+</ContentPage>

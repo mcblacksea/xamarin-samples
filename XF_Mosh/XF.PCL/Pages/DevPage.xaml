@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="XF.DevPage">
+             x:Class="XF.PCL.Pages.DevPage">
     <StackLayout BindingContext="{x:Reference slider}" Padding="40" >
         <BoxView Color="Green" Opacity="{Binding Value}"/>
         <Label Text="{Binding Value, StringFormat='Value is {0:F2}'}" 
