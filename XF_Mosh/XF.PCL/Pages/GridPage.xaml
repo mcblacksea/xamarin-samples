@@ -7,7 +7,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XF.PCL.Pages.GridPage">
-    <Grid BackgroundColor="Yellow"
+    <!--<Grid BackgroundColor="Yellow"
           RowSpacing="40"
           ColumnSpacing="40">
         <Grid.RowDefinitions>
@@ -26,5 +26,5 @@
         <Label Grid.Row="1" Grid.Column="1" Text="Label 4" BackgroundColor="Silver" />
         <Label Grid.Row="2" Grid.ColumnSpan="3" Text="Column span" BackgroundColor="Silver" />
         <Label Grid.Column="2" Grid.RowSpan="3" Text="Row span" BackgroundColor="Silver" />
-    </Grid>
+    </Grid>-->
 </ContentPage>
