@@ -7,10 +7,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XF.PCL.Pages.AbsolutePage">
-    <AbsoluteLayout>
+    <!--<AbsoluteLayout>
         <BoxView Color="Aqua" AbsoluteLayout.LayoutBounds="0, 0, 100, 100" AbsoluteLayout.LayoutFlags="All"/>
         <BoxView Color="White" AbsoluteLayout.LayoutBounds="0.5, 0.1, 100, 100" AbsoluteLayout.LayoutFlags="PositionProportional"/>
         <Button Text="Get Started" BackgroundColor="Silver" TextColor="White" 
                 AbsoluteLayout.LayoutBounds="0, 1, 1, 50" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"/>
-    </AbsoluteLayout>
+    </AbsoluteLayout>-->
 </ContentPage>
