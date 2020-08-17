@@ -9,7 +9,7 @@ namespace XF
         {
             InitializeComponent();
 
-            MainPage = new StackPage();
+            MainPage = new RelativePage();
         }
 
         protected override void OnStart()
