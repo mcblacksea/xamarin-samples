@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:PaperBoy.Effects;assembly=PaperBoy"
+             Title="Full Article"
+             x:Class="PaperBoy.Pages.ItemDetailPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{StaticResource ToggleFavoriteCommand}" CommandParameter="{Binding}" Order="Secondary" Text="Add to Favorites" Icon="icon_favorites.png"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout Margin="40">
+        
+        <Image VerticalOptions="Center"
+               Source="{Binding ImageUrl}"
+               Aspect="AspectFit"/>
+        
+        <Label Style="{DynamicResource ListTitleStyle}"
+               Text="{Binding Title}"/>
+        
+        <Label Style="{DynamicResource ListDescriptionStyle}"
+               Text="{Binding Description}"/>
+        
+        <Label Style="{DynamicResource ListDescriptionStyle}"
+               Text="{Binding CreatedDate,Converter={StaticResource AgoLabelConverter}}"/>
+
+        <Button Text="Read Article" Command="{StaticResource SpeakCommand}" CommandParameter="{Binding Title}"/>
+        <Label HorizontalOptions="Center" VerticalOptions="Start" Text="View Article">
+            <Label.Effects>
+                <effects:HyperlinkEffect/>
+            </Label.Effects>
+        </Label>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="PaperBoy.Pages.TrendingPage">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="icon_refresh.png" Command="{StaticResource RefreshNewsCommand}" CommandParameter="Trending" Text="Refresh" Order="Primary"/>
+    </ContentPage.ToolbarItems>
+
+    <ListView
+        x:Name="newsListView"
+        HasUnevenRows="True"
+        ItemTapped="OnItemTapped"
+        SeparatorVisibility="Default"
+        IsRefreshing="{Binding IsBusy}"
+        ItemsSource="{Binding TrendingNews}"
+        Margin="20">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!--<controls:CircleImage Margin="5"
+                                              HeightRequest="100"
+                                              WidthRequest="100"
+                                              Grid.RowSpan="2"
+                                              Source="{Binding ImageUrl}"
+                                              Grid.Column="0"
+                                              Grid.Row="0"/>-->
+                        <Image Margin="5"
+                               HeightRequest="100"
+                               WidthRequest="100"
+                               Grid.RowSpan="3"
+                               Source="{Binding ImageUrl}"
+                               Grid.Column="0"
+                               Grid.Row="0"/>
+                        <Label FontSize="Medium"
+                               Grid.Column="1"
+                               Grid.Row="0"
+                               Margin="0,5,0,0"
+                               Style="{DynamicResource ListTitleStyle}"
+                               Text="{Binding Title}"/>
+                        <Label Style="{DynamicResource ListDescriptionStyle}"
+                               Text="TOPIC:"
+                               Grid.Column="1"
+                               Grid.Row="1"/>
+                        <Label VerticalTextAlignment="Start"
+                               VerticalOptions="Start"
+                               Grid.Column="1"
+                               Grid.Row="2"
+                               Style="{DynamicResource ListDescriptionStyle}"
+                               Text="{Binding Description}"/>
+                       
+                               
+                        <Label VerticalOptions="Start" 
+                               Margin="0" 
+                               FontSize="Micro" 
+                               Grid.Column="1" 
+                               Grid.Row="3"
+                               Text="{Binding CreatedDate,Converter={StaticResource AgoLabelConverter}"/>
+
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        
+    </ListView>
+</ContentPage>

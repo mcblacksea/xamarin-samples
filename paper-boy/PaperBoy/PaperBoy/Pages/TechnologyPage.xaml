@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:PaperBoy.Behaviors;assembly=PaperBoy"
+             x:Class="PaperBoy.Pages.TechnologyPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="icon_refresh.png" Command="{StaticResource RefreshNewsCommand}" CommandParameter="Technology" Text="Refresh" Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    
+    <ListView
+        x:Name="newsListView"
+        HasUnevenRows="True"
+        IsRefreshing="{Binding IsBusy}"
+        ItemsSource="{Binding TechnologyNews}"
+        Margin="20">
+
+        <ListView.Behaviors>
+            <behaviors:EventToCommandBehavior 
+                EventName="ItemSelected" 
+                Command="{StaticResource NavigateToDetailCommand}"
+                Converter="{StaticResource SelectedItemConverter}" />
+        </ListView.Behaviors>
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!--<controls:CircleImage Margin="5"
+                                              HeightRequest="100"
+                                              WidthRequest="100"
+                                              Grid.RowSpan="2"
+                                              Source="{Binding ImageUrl}"
+                                              Grid.Column="0"
+                                              Grid.Row="0"/>-->
+                        <Image Margin="5"
+                               HeightRequest="100"
+                               WidthRequest="100"
+                               Grid.RowSpan="2"
+                               Source="{Binding ImageUrl}"
+                               Grid.Column="0"
+                               Grid.Row="0"/>
+                        <Label FontSize="Medium"
+                               Style="{DynamicResource ListTitleStyle}"
+                               Grid.Column="1"
+                               Grid.Row="0"
+                               Margin="0,5,0,0"
+                               FontAttributes="{Binding Title,Converter={StaticResource LableFontWeightConverter}}"
+                               Text="{Binding Title}"/>
+                        <Label VerticalTextAlignment="Start"
+                               Style="{DynamicResource ListDescriptionStyle}"
+                               VerticalOptions="Start"
+                               Grid.Column="1"
+                               Grid.Row="1"
+                               Text="{Binding Description}"/>
+                        <Label VerticalOptions="Start" 
+                               Margin="0,5" 
+                               FontSize="Micro" 
+                               Grid.Column="1" 
+                               Grid.Row="2"
+                               Text="{Binding CreatedDate,Converter={StaticResource AgoLabelConverter}}"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+    </ListView>
+</ContentPage>

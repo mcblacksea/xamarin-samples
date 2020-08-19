@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PaperBoy"
+             xmlns:pages="clr-namespace:PaperBoy.Pages"
+             Title="Home"
+             x:Class="PaperBoy.MainPage">
+    
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Icon="icon_settings.png" Command="{StaticResource NavigateToSettingsCommand}" Text="Settings" Order="Primary"/>
+    </TabbedPage.ToolbarItems>
+    
+    <TabbedPage.Children>
+        <pages:TrendingPage Icon="icon_trending.png" Title="Trending"/>
+        <pages:SearchPage Icon="icon_search.png" Title="Search"/>
+        <pages:TechnologyPage Icon="icon_technology.png" Title="Technology"/>
+        <pages:FavoritesPage Icon="icon_favorites.png" Title="Favorite"/>
+    </TabbedPage.Children>
+	
+
+</TabbedPage>

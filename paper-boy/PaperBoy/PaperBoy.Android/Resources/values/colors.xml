@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <color name="apptheme_color">#0059B2</color>
+  <color name="list_highlight_color">#CCC</color>
+</resources>

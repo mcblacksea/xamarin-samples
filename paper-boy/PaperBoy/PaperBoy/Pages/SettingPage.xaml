@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Settings"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="PaperBoy.Pages.SettingPage">
+    
+    <ScrollView Margin="10,0,0,0">
+        <StackLayout Margin="40">
+            <Label Style="{x:DynamicResource TitleStyle}" Text="Adjust your app settings and preferences as needed." />
+
+            <Label Style="{x:DynamicResource SubtitleStyle}" Text="Maxmum articles to display:"/>
+            <Slider x:Name="articleCounterSlider" Minimum="0" Maximum="20" />
+
+            <Label Style="{x:DynamicResource SubtitleStyle}" Text="Enter your display name:"/>
+            <Entry Text="{Binding CurrentUser.DisplayName}"/>
+
+            <Label Style="{x:DynamicResource SubtitleStyle}" Text="Current operating System:"/>
+            <Label FontAttributes="Bold" Style="{x:DynamicResource SubtitleStyle}" Text="{Binding ExtendedPlatformLabel}"/>
+
+            <Label Style="{x:DynamicResource SubtitleStyle}" Text="Device orientation:"/>
+            <Label FontAttributes="Bold" Style="{x:DynamicResource SubtitleStyle}" Text="{Binding DeviceOrientation}"/>
+            
+            <Label Style="{x:DynamicResource SubtitleStyle}" Text="Select a default news category:"/>
+            <Picker x:Name="categoryPicker">
+                <Picker.Items>
+                    <x:String>Business</x:String>
+                    <x:String>Entertainment</x:String>
+                    <x:String>Health</x:String>
+                    <x:String>Politics</x:String>
+                    <x:String>Science and Technology</x:String>
+                    <x:String>Sports</x:String>
+                    <x:String>World</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button Text="Save" Clicked="OnSaveClicked"/>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

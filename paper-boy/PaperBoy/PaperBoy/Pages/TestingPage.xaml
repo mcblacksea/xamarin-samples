@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PaperBoy.Pages.TestingPage">
+    <ScrollView>
+        <StackLayout Padding="40">
+
+            <Button Text="No CLass"/>
+            <Button Text="Default CLass" StyleClass="Default"/>
+            <Button Text="Primary CLass" StyleClass="Primary"/>
+            <Button Text="Success CLass" StyleClass="Success"/>
+            <Button Text="Info CLass" StyleClass="Info"/>
+            <Button Text="Warning CLass" StyleClass="Warning"/>
+            <Button Text="Oanger CLass" StyleClass="Danger"/>
+            <Button Text="Link CLass" StyleClass="Link"/>
+            <Button Text="Small CLass" StyleClass="Small"/>
+            <Button Text="Large CLass" StyleClass="Large"/>
+            <Label Style="{x:DynamicResource TitleStyle}" Text="Title Style"/>
+            <Label Style="{x:DynamicResource SubtitleStyle}" Text="Subtitle Style"/>
+            <Label Style="{x:DynamicResource ListItemTextStyle}" Text="List Item Text Style"/>
+            <Label Style="{x:DynamicResource ListItemDetailStyle}" Text="List Item Text Style"/>
+            <Label Style="{x:DynamicResource BodyStyle}" Text="Body Style"/>
+            <Label Style="{x:DynamicResource CaptionStyle}" Text="Caption Style"/>
+
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Entry TextColor="White" x:Name="EntryStyleTrigger" Placeholder="Tap to identify">
+                    <Entry.Triggers>
+                        <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                            <Setter Property="BackgroundColor">
+                                <Setter.Value>
+                                    <OnPlatform x:TypeArguments="Color" iOS="#8B60A8" Android="#8EC63F" WinPhone="#01AEF2" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Text">
+                                <Setter.Value>
+                                    <OnPlatform x:TypeArguments="x:String" iOS="iOS" Android="Android" WinPhone="Windows" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Entry.Triggers>
+                </Entry>
+            </StackLayout>
+            
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
