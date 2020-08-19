@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:light="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Light"
+             xmlns:dark="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Dark"
+             xmlns:command="clr-namespace:PaperBoy.Common.Commands" 
+             xmlns:converters="clr-namespace:PaperBoy.Common.Converters"
+             x:Class="PaperBoy.App">
+	<Application.Resources>
+        <ResourceDictionary>
+            
+            <command:NavigateToSettingsCommand x:Key="NavigateToSettingsCommand"/>
+            <command:RefreshNewsCommand x:Key="RefreshNewsCommand"/>
+            <command:SpeakCommand x:Key="SpeakCommand"/>
+            <command:ToggleFavoriteCommand x:Key="ToggleFavoriteCommand"/>
+            <command:NavigateToDetailCommand x:Key="NavigateToDetailCommand"/>
+            
+            <converters:LableFontWeightConverter x:Key="LableFontWeightConverter"/>
+            <converters:AgoLabelConverter x:Key="AgoLabelConverter"/>
+            <converters:SelectedItemConverter x:Key="SelectedItemConverter"/>
+            
+            <Color x:Key="ListTextColor">#000000</Color>
+
+            <Style x:Key="ListTitleStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions"
+                        Value="Start"/>
+                <Setter Property="VerticalOptions"
+                        Value="Center"/>
+                <Setter Property="FontSize"
+                        Value="Medium"/>
+                <Setter Property="TextColor" Value="{DynamicResource ListTextColor}"/>
+            </Style>
+            
+            <Style x:Key="ListDescriptionStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions"
+                        Value="Start"/>
+                <Setter Property="VerticalOptions"
+                        Value="Start"/>
+                <Setter Property="TextColor" Value="{DynamicResource ListTextColor}"/>
+                <Setter Property="Opacity" Value="0.4"/>
+            </Style>
+        </ResourceDictionary>
+
+	</Application.Resources>
+</Application>
