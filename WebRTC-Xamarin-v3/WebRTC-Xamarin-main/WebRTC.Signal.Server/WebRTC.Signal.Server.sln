@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebRTC.Signal.Server", "WebRTC.Signal.Server.csproj", "{4D5481AF-F41F-428F-B859-9E93676BB919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebRTC", "..\WebRTC\WebRTC.csproj", "{814E79C1-8E18-47D5-B539-1868A35F350A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D5481AF-F41F-428F-B859-9E93676BB919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D5481AF-F41F-428F-B859-9E93676BB919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D5481AF-F41F-428F-B859-9E93676BB919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D5481AF-F41F-428F-B859-9E93676BB919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{814E79C1-8E18-47D5-B539-1868A35F350A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{814E79C1-8E18-47D5-B539-1868A35F350A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{814E79C1-8E18-47D5-B539-1868A35F350A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{814E79C1-8E18-47D5-B539-1868A35F350A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
