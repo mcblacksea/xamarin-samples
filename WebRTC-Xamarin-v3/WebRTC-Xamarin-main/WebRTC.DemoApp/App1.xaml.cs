@@ -1,9 +1,9 @@
 ﻿
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNet.SignalR.Client;
 
 //using Microsoft.AspNetCore.SignalR.Client;
-using Microsoft.AspNet.SignalR.Client;
 using Newtonsoft.Json.Linq;
 
 using WebRTC.DemoApp.Interfaces;

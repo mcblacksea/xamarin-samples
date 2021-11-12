@@ -103,11 +103,10 @@ namespace WebRTC.DemoApp.Droid.Renderers
                 if (permission == PermissionStatus.Granted)
                 {
                     var audioManager = (AudioManager)this.Context.GetSystemService(Context.AudioService);
-                    var result = audioManager.RequestAudioFocus(null, Stream.Music,
-    AudioFocus.GainTransient);
+                    var result = audioManager.RequestAudioFocus(null, Stream.Music, AudioFocus.GainTransient);
                     if(result == AudioFocusRequest.Granted)
                     {
-                        var audioManager = (AudioManager)this.Context.GetSystemService(Context.AudioService);
+                        audioManager = (AudioManager)this.Context.GetSystemService(Context.AudioService);
                         audioManager.SpeakerphoneOn = true;
                         audioManager.Mode = Mode.InCommunication;
                         audioManager.SetStreamVolume(Stream.VoiceCall, audioManager.GetStreamMaxVolume(Stream.VoiceCall), VolumeNotificationFlags.PlaySound);
