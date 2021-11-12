@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,6 +81,8 @@
     <ProjectReference Include="..\WebRTC.iOS.Binding\WebRTC.iOS.Binding.csproj">
       <Project>{98BCCC65-7E7D-45AE-90CB-952CE4E641AC}</Project>
       <Name>WebRTC.iOS.Binding</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
