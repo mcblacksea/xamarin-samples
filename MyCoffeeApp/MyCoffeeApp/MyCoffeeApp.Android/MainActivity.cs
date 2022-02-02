@@ -49,6 +49,7 @@ namespace MyCoffeeApp.Droid
 
     public class Environment : IEnvironment
     {
+        [Obsolete]
         public void SetStatusBarColor(System.Drawing.Color color, bool darkStatusBarTint)
         {
             if (Build.VERSION.SdkInt < Android.OS.BuildVersionCodes.Lollipop)

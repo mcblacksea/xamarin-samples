@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿
 using Foundation;
 using MyCoffeeApp.Helpers;
 using UIKit;
-using Xamarin.Forms;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
-[assembly:Dependency(typeof(MyCoffeeApp.iOS.Environment))]
+[assembly: Dependency(typeof(MyCoffeeApp.iOS.Environment))]
 
 namespace MyCoffeeApp.iOS
 {
