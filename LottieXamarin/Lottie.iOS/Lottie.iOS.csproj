@@ -1,0 +1,50 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+  <PropertyGroup>    
+    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">xamarin.ios10</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">xamarin.ios10;xamarin.mac20;xamarin.tvos10</TargetFrameworks>
+    <AssemblyName>Lottie.iOS</AssemblyName>
+    <RootNamespace>Lottie.iOS</RootNamespace>
+    <Description>Render After Effects animations natively on Android, iOS, MacOS, TVOs and UWP</Description>
+    <PackageId>Com.Airbnb.iOS.Lottie</PackageId>
+    <IsBindingProject Condition=" '$(OS)' != 'Windows_NT' ">true</IsBindingProject>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Version>2.5.13</Version>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+    <None Include="readme.txt" pack="true" PackagePath="." />
+  </ItemGroup>
+    
+  <ItemGroup Condition=" '$(OS)' != 'Windows_NT' ">
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+    <Compile Include="Linker.cs" />
+    <Compile Include="LOTAnimationView.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('xamarin.ios')) ">
+    <ObjcBindingApiDefinition Include="ApiDefinitions.Ios.cs" />
+    <ObjcBindingNativeLibrary Include="libLottie-ios.a" />
+    <Compile Include="libLottie-ios.linkwith.cs">
+      <DependentUpon>libLottie-ios.a</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('xamarin.mac')) ">
+    <ObjcBindingApiDefinition Include="ApiDefinitions.Mac.cs" />
+    <ObjcBindingNativeLibrary Include="libLottie-macos.a" />
+    <Compile Include="libLottie-macos.linkwith.cs">
+      <DependentUpon>libLottie-macos.a</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('xamarin.tvos')) ">
+    <ObjcBindingApiDefinition Include="ApiDefinitions.Ios.cs" />
+    <ObjcBindingNativeLibrary Include="libLottie-tvos.a" />
+    <Compile Include="libLottie-tvos.linkwith.cs">
+      <DependentUpon>libLottie-tvos.a</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+</Project>

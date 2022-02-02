@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:vm="clr-namespace:ShellLoginSample.ViewModels"
+       mc:Ignorable="d"
+       FlyoutBehavior="Disabled"
+       xmlns:local="clr-namespace:ShellLoginSample.Views"
+       xmlns:app="clr-namespace:ShellLoginSample"
+       Title="ShellLoginSample"
+       x:Class="ShellLoginSample.AppShell">
+
+    <Shell.BindingContext>
+        <vm:AppViewModel/>
+    </Shell.BindingContext>
+
+    <ShellItem Route="login">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"/>
+    </ShellItem>
+    
+    <TabBar Route="main">
+        <Tab Title="Browse" Icon="tab_feed.png">
+            <ShellContent 
+                ContentTemplate="{DataTemplate local:ItemsPage}" />
+        </Tab>
+        <Tab Title="About" Icon="tab_about.png">
+            <ShellContent 
+                ContentTemplate="{DataTemplate local:AboutPage}" />
+        </Tab>
+        <Tab Title="Admin" IsVisible="{Binding IsAdmin}">
+            <ShellContent
+                ContentTemplate="{DataTemplate local:AdminPage}"/>
+        </Tab>
+    </TabBar>
+
+    
+
+</Shell>
