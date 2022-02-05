@@ -23,16 +23,16 @@ namespace ToolbarItemBadgeSample.Droid
             LoadApplication(new App());
             
         }
-        public override bool OnPrepareOptionsMenu(IMenu menu)
-        {
-            //BadgeDrawable.SetBadgeCount(this, menu.GetItem(0), 3);
-            return base.OnPrepareOptionsMenu(menu);
-        }
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
+        //public override bool OnPrepareOptionsMenu(IMenu menu)
+        //{
+        //    //BadgeDrawable.SetBadgeCount(this, menu.GetItem(0), 3);
+        //    return base.OnPrepareOptionsMenu(menu);
+        //}
+        //public override bool OnCreateOptionsMenu(IMenu menu)
+        //{
     
-            return base.OnCreateOptionsMenu(menu);
-        }
+        //    return base.OnCreateOptionsMenu(menu);
+        //}
     }
 }
 
