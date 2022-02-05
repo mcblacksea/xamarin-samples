@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:FoodDeliveryAppDualScreen.Converters"
+    x:Class="FoodDeliveryAppDualScreen.Styles.DefaultTheme">
+
+    <!-- CONVERTERS -->
+    <converters:IsRestaurantMenuVisibleConverter x:Key="IsRestaurantMenuVisibleConverter" />
+
+    <!-- COLORS -->
+    <Color x:Key="BackgroundColor">#FAFAFA</Color>
+    <Color x:Key="AccentColor">#FBD203</Color>
+
+    <!-- STYLES -->
+    <Style x:Key="SeparatorStyle" TargetType="Grid">
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="Opacity" Value="0.25" />
+        <Setter Property="BackgroundColor" Value="Gray" />
+        <Setter Property="Margin" Value="0, 6" />
+    </Style>
+
+    <Style x:Key="IconStyle" TargetType="Image">
+        <Setter Property="HeightRequest" Value="36" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
+    <Style x:Key="InfoTextStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="VerticalOptions" Value="Center" />
+     </Style>
+
+</ResourceDictionary>

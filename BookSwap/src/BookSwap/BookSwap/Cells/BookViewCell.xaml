@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ViewCell
+    x:Class="BookSwap.Cells.BookViewCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    mc:Ignorable="d">
+    <ViewCell.View>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <skia:SKCanvasView
+                x:Name="CellBackgroundCanvas"
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Fill"
+                PaintSurface="CellBackgroundCanvas_PaintSurface"
+                VerticalOptions="Fill" />
+
+
+            <StackLayout Margin="30,0,0,0" VerticalOptions="Center">
+                <Label
+                    sharedTransitions:Transition.Group="{Binding Title}"
+                    sharedTransitions:Transition.Name="ToTitle"
+                    Style="{StaticResource BookTitle}"
+                    Text="{Binding Title}"
+                    TextColor="{Binding Colors.TitleColor}" />
+                <Label
+                    sharedTransitions:Transition.Group="{Binding Title}"
+                    sharedTransitions:Transition.Name="ToAuthor"
+                    Style="{StaticResource Author}"
+                    Text="{Binding Author}"
+                    TextColor="{Binding Colors.TitleColor}" />
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="1"
+                Margin="30,20"
+                HorizontalOptions="Start"
+                Orientation="Horizontal"
+                Spacing="10"
+                VerticalOptions="Center">
+                <pancake:PancakeView
+                    BorderColor="White"
+                    BorderThickness="1.5"
+                    CornerRadius="18"
+                    Elevation="0"
+                    HasShadow="True">
+                    <Image
+                        HeightRequest="36"
+                        HorizontalOptions="Start"
+                        Source="{Binding UserImage}"
+                        VerticalOptions="Start"
+                        WidthRequest="36" />
+                </pancake:PancakeView>
+
+                <Label
+                    Style="{StaticResource User}"
+                    Text="{Binding UserName}"
+                    TextColor="{Binding Colors.AccentTextColor}"
+                    VerticalOptions="Center" />
+            </StackLayout>
+
+            <pancake:PancakeView
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Margin="20,20,30,20"
+                Elevation="10"
+                HasShadow="True"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <Image
+                    sharedTransitions:Transition.Group="{Binding Title}"
+                    sharedTransitions:Transition.Name="SelectedBook"
+                    Source="{Binding CoverImage}" />
+            </pancake:PancakeView>
+
+        </Grid>
+
+    </ViewCell.View>
+</ViewCell>
