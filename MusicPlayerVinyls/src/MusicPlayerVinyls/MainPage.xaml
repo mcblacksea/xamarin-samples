@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MusicPlayerVinyls.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:converters="clr-namespace:MusicPlayerVinyls.Converters"
+    xmlns:magic="http://magic.com/schemas/gradients"
+    xmlns:models="clr-namespace:MusicPlayerVinyls.Models"
+    xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+    xmlns:viewModels="clr-namespace:MusicPlayerVinyls.ViewModels"
+    xmlns:views="clr-namespace:MusicPlayerVinyls.Controls">
+    <ContentPage.BindingContext>
+        <viewModels:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <!--<ResourceDictionary>
+
+            <converters:RatioConverter
+                x:Key="vinylTranslation"
+                Default="50"
+                Inverted="True"
+                Max="50"
+                Min="0"
+                Ratio=".5"
+                UseAbsolute="True" />
+
+            <converters:RatioConverter
+                x:Key="vinylRotation"
+                Default="0"
+                Inverted="True"
+                Max="50"
+                Min="-50"
+                Ratio="1"
+                UseAbsolute="True" />
+
+
+            <converters:RatioConverter
+                x:Key="albumTranslation"
+                Default="-50"
+                Inverted="True"
+                Max="0"
+                Min="-50"
+                Ratio="-.5"
+                UseAbsolute="True" />
+
+            <converters:RatioConverter
+                x:Key="albumScaleTranslation"
+                Default="1.1"
+                Inverted="True"
+                Max="1.1"
+                Min="1"
+                Ratio=".005"
+                UseAbsolute="True" />
+
+            <converters:RatioConverter
+                x:Key="panelTranslation"
+                Default="0"
+                Max="150"
+                Min="-150"
+                Ratio="1" />
+
+            <converters:RatioConverter
+                x:Key="panelRotationTranslation"
+                Default="0"
+                Inverted="True"
+                Max="10"
+                Min="-10"
+                Ratio=".1" />
+
+            <converters:RatioConverter
+                x:Key="panelScaleTranslation"
+                Default="1"
+                Inverted="True"
+                Max="1"
+                Min=".5"
+                Ratio=".001"
+                UseAbsolute="True" />
+
+
+
+
+
+
+        </ResourceDictionary>-->
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="AUTO, AUTO, .3*, 10, .6*, 60" RowSpacing="0">
+
+        <!--  top gradient  -->
+        <magic:GradientView Grid.Row="0" Grid.RowSpan="3">
+            <magic:LinearGradient>
+                <magic:GradientStop Color="#EFEFEF" />
+                <magic:GradientStop Color="White" />
+            </magic:LinearGradient>
+        </magic:GradientView>
+
+        <BoxView
+            Grid.Row="4"
+            Grid.RowSpan="2"
+            Color="#ECECEC" />
+
+        <BoxView
+            Grid.Row="4"
+            CornerRadius="0,0,0,40"
+            Color="#F5F5F5" />
+
+        <!--  toolbar  -->
+        <Grid Margin="10" ColumnDefinitions="*, Auto, Auto">
+            <Image HorizontalOptions="Start" Source="BackArrow" />
+            <Image
+                Grid.Column="1"
+                Margin="0,0,20,0"
+                Source="Search" />
+            <Image
+                Grid.Column="2"
+                HorizontalOptions="Start"
+                Source="Collection" />
+
+        </Grid>
+
+
+        <!--  header  -->
+        <!--<StackLayout Grid.Row="1" Orientation="Horizontal">
+            <Label Style="{StaticResource LightH1}" Text="My" />
+            <Label Style="{StaticResource BoldH1}" Text="Library" />
+        </StackLayout>-->
+
+        <Label Grid.Row="1" Margin="20,0,0,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Style="{StaticResource LightH1}" Text="My " />
+                    <Span Style="{StaticResource BoldH1}" Text="Library" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <!--  top carousel  -->
+        <cards:CoverFlowView
+            x:Name="ArtCarousel"
+            Grid.Row="2"
+            ItemsSource="{Binding Albums}"
+            SelectedIndex="{Binding Source={x:Reference AlbumDetailsView}, Path=SelectedIndex}">
+            <cards:CoverFlowView.ItemTemplate>
+                <DataTemplate x:DataType="models:Album">
+                    <views:AlbumArtView />
+                </DataTemplate>
+            </cards:CoverFlowView.ItemTemplate>
+        </cards:CoverFlowView>
+
+        <!--  shelf  -->
+        <BoxView Grid.Row="3" Color="#ECECEC" />
+
+
+
+        <!--  bottom carousel  -->
+        <cards:CoverFlowView
+            x:Name="AlbumDetailsView"
+            Grid.Row="4"
+            ItemsSource="{Binding Albums}"
+            PositionShiftValue="-150"
+            UserInteracted="AlbumDetailsView_UserInteracted">
+
+            <x:Arguments>
+                <proc:CoverFlowProcessor RotationYFactor="0.02" ScaleFactor="0.5" />
+            </x:Arguments>
+
+            <cards:CoverFlowView.ItemTemplate>
+                <DataTemplate x:DataType="models:Album">
+                    <views:AlbumDetailsView />
+                </DataTemplate>
+            </cards:CoverFlowView.ItemTemplate>
+        </cards:CoverFlowView>
+
+        <magic:GradientView
+            Grid.Row="4"
+            HeightRequest="30"
+            VerticalOptions="Start">
+            <magic:LinearGradient>
+                <magic:GradientStop Color="#CDCDCD" />
+                <magic:GradientStop Color="Transparent" />
+            </magic:LinearGradient>
+        </magic:GradientView>
+
+        <Grid
+            Grid.Row="5"
+            Margin="20,0"
+            ColumnDefinitions="Auto, *, 40, 40">
+
+
+            <views:CircularProgress
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="50"
+                Value="{Binding PlayPercent}" />
+
+            <Image
+                HeightRequest="40"
+                HorizontalOptions="Center"
+                Source="{Binding Albums[0].AlbumArt}"
+                VerticalOptions="Center"
+                WidthRequest="40">
+                <Image.Clip>
+                    <EllipseGeometry
+                        Center="20,20"
+                        RadiusX="20"
+                        RadiusY="20" />
+                </Image.Clip>
+            </Image>
+
+            <StackLayout
+                Grid.Column="1"
+                Margin="10,0"
+                Orientation="Vertical"
+                Spacing="0"
+                VerticalOptions="Center">
+                <Label Text="Dollar Day" Style="{StaticResource BodyDark}" />
+                <Label Text="David Bowie" Style="{StaticResource BodyLight}"
+                       FontSize="14"/>
+            </StackLayout>
+
+
+            <Image
+                Grid.Column="2"
+                HorizontalOptions="Center"
+                Source="PlayButton"
+                VerticalOptions="Center" />
+            <Image
+                Grid.Column="3"
+                HorizontalOptions="Center"
+                Source="PlaylistButton"
+                VerticalOptions="Center" />
+        </Grid>
+
+    </Grid>
+
+
+</ContentPage>

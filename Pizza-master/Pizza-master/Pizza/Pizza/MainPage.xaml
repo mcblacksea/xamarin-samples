@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Pizza.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Pizza.Controls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    BackgroundColor="{StaticResource Background}"
+    mc:Ignorable="d">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Background">#151E34</Color>
+            <Color x:Key="AccentColor">#FBC96D</Color>
+            <Color x:Key="PillColor">Gray</Color>
+            <Color x:Key="PillTextColor">White</Color>
+            <Color x:Key="BodyTextColor">White</Color>
+
+            <Style x:Key="AccentButton" TargetType="Button">
+                <Setter Property="CornerRadius" Value="30" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="Margin" Value="20,10" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+                <Setter Property="HeightRequest" Value="60" />
+            </Style>
+
+
+            <Style x:Key="QuantityButton" TargetType="Button">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BorderColor" Value="{StaticResource PillTextColor}" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="TextColor" Value="{StaticResource PillTextColor}" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="WidthRequest" Value="30" />
+            </Style>
+
+            <Style x:Key="PillFrame" TargetType="Frame">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="BackgroundColor" Value="{StaticResource PillColor}" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="HeightRequest" Value="20" />
+            </Style>
+
+            <Style x:Key="PillText" TargetType="Label">
+                <Setter Property="Margin" Value="10,0" />
+                <Setter Property="TextColor" Value="{StaticResource PillTextColor}" />
+            </Style>
+
+            <Style x:Key="PriceText" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+            </Style>
+
+            <Style x:Key="DescriptionText" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BodyTextColor}" />
+            </Style>
+
+            <Style x:Key="QuantityStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+                <Setter Property="FontFamily" Value="SemiBold" />
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+
+            <Style x:Key="ButtonTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Background}" />
+                <Setter Property="FontFamily" Value="SemiBold" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="RatingLabel" TargetType="Label">
+                <Setter Property="FontFamily" Value="FAR" />
+                <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+            </Style>
+
+            <x:String x:Key="FAS-Star">&#xf005;</x:String>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="80" />
+        </Grid.RowDefinitions>
+
+        <Image
+            x:Name="BasilLeaf"
+            HorizontalOptions="End"
+            Source="basilleaf"
+            TranslationX="100"
+            TranslationY="130"
+            VerticalOptions="Center" />
+
+        <BoxView
+            Grid.Row="1"
+            Margin="20,10"
+            BackgroundColor="White"
+            CornerRadius="30"
+            HeightRequest="60"
+            HorizontalOptions="Fill"
+            VerticalOptions="Center" />
+
+        <AbsoluteLayout>
+            <Image
+                x:Name="Pizza"
+                AbsoluteLayout.LayoutBounds="0,0,100,100"
+                AbsoluteLayout.LayoutFlags="None"
+                Source="Pizza" />
+
+            <Image
+                x:Name="FlyingPizza"
+                AbsoluteLayout.LayoutBounds="0,0,100,100"
+                AbsoluteLayout.LayoutFlags="None"
+                IsVisible="False"
+                Source="Pizza" />
+
+            <Label
+                x:Name="SizeLabel"
+                AbsoluteLayout.LayoutBounds="0,0,100,100"
+                AbsoluteLayout.LayoutFlags="None"
+                FontFamily="Regular"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Center"
+                Text="Small"
+                TextColor="White"
+                VerticalOptions="Start" />
+
+            <skia:SKCanvasView
+                x:Name="PizzaRuler"
+                HeightRequest="10"
+                PaintSurface="PizzaRuler_PaintSurface" />
+
+            <Grid x:Name="PizzaRulerThumb">
+                <BoxView
+                    BackgroundColor="{StaticResource AccentColor}"
+                    CornerRadius="15"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="30">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PizzaRulerThumb_Tapped" />
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+                <Label
+                    x:Name="PizzaThumbLabel"
+                    HorizontalOptions="Center"
+                    InputTransparent="True"
+                    Text="&gt;"
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+
+            </Grid>
+
+        </AbsoluteLayout>
+
+        <Label
+            x:Name="PizzaTitle"
+            Margin="20,40,0,0"
+            AbsoluteLayout.LayoutBounds="0,0,0,0"
+            AbsoluteLayout.LayoutFlags="None"
+            FontFamily="Regular"
+            FontSize="30"
+            InputTransparent="True"
+            Text="Pizza Margherita"
+            TextColor="White"
+            VerticalOptions="Start" />
+
+        <StackLayout
+            x:Name="RatingBar"
+            Margin="20,90,0,0"
+            HorizontalOptions="Start"
+            Orientation="Horizontal"
+            VerticalOptions="Start">
+
+            <Label Style="{StaticResource RatingLabel}" Text="{StaticResource FAS-Star}" />
+            <Label Style="{StaticResource RatingLabel}" Text="{StaticResource FAS-Star}" />
+            <Label Style="{StaticResource RatingLabel}" Text="{StaticResource FAS-Star}" />
+            <Label Style="{StaticResource RatingLabel}" Text="{StaticResource FAS-Star}" />
+            <Label Style="{StaticResource DescriptionText}" Text="82 votes" />
+        </StackLayout>
+
+
+        <StackLayout
+            x:Name="PizzaDescription"
+            Margin="20,0"
+            IsVisible="True"
+            Spacing="20"
+            VerticalOptions="End">
+            <StackLayout Orientation="Horizontal">
+                <controls:PillLabel
+                    FrameStyle="{StaticResource PillFrame}"
+                    LabelStyle="{StaticResource PillText}"
+                    Text="Tomato" />
+                <controls:PillLabel
+                    FrameStyle="{StaticResource PillFrame}"
+                    LabelStyle="{StaticResource PillText}"
+                    Text="Basil" />
+                <controls:PillLabel
+                    FrameStyle="{StaticResource PillFrame}"
+                    LabelStyle="{StaticResource PillText}"
+                    Text="Cheese" />
+            </StackLayout>
+
+            <Label Style="{StaticResource PriceText}" Text="$13.99" />
+
+            <Label Style="{StaticResource DescriptionText}" Text="I'm baby tumblr succulents edison bulb bushwick flexitarian whatever banjo kogi distillery slow-carb actually viral poutine semiotics. Biodiesel YOLO flannel umami. " />
+        </StackLayout>
+
+        <Grid
+            x:Name="QuantitySelect"
+            Margin="20,30"
+            ColumnSpacing="40"
+            VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                FontSize="18"
+                Style="{StaticResource DescriptionText}"
+                Text="Quantity"
+                VerticalOptions="Center" />
+
+            <Frame
+                Grid.Column="1"
+                Padding="0"
+                BackgroundColor="Transparent"
+                BorderColor="White"
+                CornerRadius="25"
+                HasShadow="False"
+                HeightRequest="50"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center" />
+            <Button
+                x:Name="DecreaseButton"
+                Grid.Column="1"
+                Margin="10,0,0,0"
+                Clicked="DecreaseButton_Clicked"
+                HorizontalOptions="Start"
+                Style="{StaticResource QuantityButton}"
+                Text="-"
+                VerticalOptions="Center" />
+            <Button
+                x:Name="IncreaseButton"
+                Grid.Column="1"
+                Margin="0,0,10,0"
+                Clicked="IncreaseButton_Clicked"
+                HorizontalOptions="End"
+                Style="{StaticResource QuantityButton}"
+                Text="+"
+                VerticalOptions="Center" />
+
+            <controls:FerrisLabel
+                x:Name="QuantityLabel"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                Text="1"
+                TextStyle="{StaticResource QuantityStyle}"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+        <Button
+            x:Name="AddToCartButton"
+            Grid.Row="1"
+            Clicked="AddToCartButton_Clicked"
+            Style="{StaticResource AccentButton}"
+            Text="Add to Cart" />
+
+        <Button
+            x:Name="PlaceOrderButton"
+            Grid.Row="1"
+            Clicked="PlaceOrderButton_Clicked"
+            Style="{StaticResource AccentButton}" />
+
+        <Grid
+            x:Name="PlaceOrder"
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            VerticalOptions="Fill">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                HorizontalOptions="Center"
+                Opacity=".6"
+                Style="{StaticResource ButtonTextStyle}"
+                Text="Place Order"
+                VerticalOptions="Center" />
+            <controls:FerrisLabel
+                x:Name="OrderTotal"
+                Grid.Column="1"
+                HeightRequest="80"
+                TextStyle="{StaticResource ButtonTextStyle}"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+        <Image
+            x:Name="BackButton"
+            Margin="10"
+            HorizontalOptions="Start"
+            Source="backbutton"
+            VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BackButton_Tapped" />
+            </Image.GestureRecognizers>
+        </Image>
+
+
+    </Grid>
+
+</ContentPage>
