@@ -1,0 +1,36 @@
+parameters:
+  updateBuild: false
+
+steps:
+  - pwsh: |
+      $featurePrefix = "refs/heads/$env:FEATURE_NAME_PREFIX"
+      if ($env:BUILD_SOURCEBRANCH.StartsWith($featurePrefix)) {
+        $feature = $env:BUILD_SOURCEBRANCH.Substring($featurePrefix.Length)
+        Write-Host "Feature name: $feature"
+        Write-Host "##vso[task.setvariable variable=FEATURE_NAME]$feature"
+      } else {
+        Write-Host "No feature name."
+      }
+    displayName: Determine the feature name, if any
+  - pwsh: |
+      $pr = "pr." + $env:SYSTEM_PULLREQUEST_PULLREQUESTNUMBER
+      Write-Host "Preview label: $pr"
+      Write-Host "##vso[task.setvariable variable=PREVIEW_LABEL]$pr"
+    displayName: Use a special preview label for PRs
+    condition: eq(variables['Build.Reason'], 'PullRequest')
+  - pwsh: |
+      $nightly = "nightly"
+      Write-Host "Preview label: $nightly"
+      Write-Host "##vso[task.setvariable variable=PREVIEW_LABEL]$nightly"
+    displayName: Use a special preview label for scheduled
+    condition: eq(variables['Build.Reason'], 'Schedule')
+  - pwsh: |
+      $label = ""
+      if ($env:BUILD_REASON -ne "PullRequest") {
+        $label = "+" + $env:BUILD_SOURCEBRANCHNAME
+      }
+      $label = "$env:SKIASHARP_VERSION-$env:PREVIEW_LABEL.$env:BUILD_NUMBER$label"
+      Write-Host "Build label: $label"
+      Write-Host "##vso[build.updatebuildnumber]$label"
+    displayName: Update the build number with a more readable one
+    condition: ${{ parameters.updateBuild }}

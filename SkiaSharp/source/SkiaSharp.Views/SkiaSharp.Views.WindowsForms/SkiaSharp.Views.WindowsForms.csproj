@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net462;netcoreapp3.1</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>SkiaSharp.Views.Desktop</RootNamespace>
+    <AssemblyName>SkiaSharp.Views.WindowsForms</AssemblyName>
+    <PackagingGroup>SkiaSharp.Views.WindowsForms</PackagingGroup>
+    <DefineConstants>$(DefineConstants);__DESKTOP__;__WINFORMS__</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenTK" Version="3.1.0" NoWarn="NU1701" />
+    <PackageReference Include="OpenTK.GLControl" Version="3.1.0" NoWarn="NU1701" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\binding\SkiaSharp\SkiaSharp.csproj" />
+    <ProjectReference Include="..\SkiaSharp.Views.Desktop.Common\SkiaSharp.Views.Desktop.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SkiaSharp.Views.Shared\Properties\SkiaSharpViewsAssemblyInfo.cs" Link="Properties\SkiaSharpViewsAssemblyInfo.cs" />
+  </ItemGroup>
+</Project>

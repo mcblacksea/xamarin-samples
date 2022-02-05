@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net462;netcoreapp3.1</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>SkiaSharp.Views.WPF</RootNamespace>
+    <AssemblyName>SkiaSharp.Views.WPF</AssemblyName>
+    <PackagingGroup>SkiaSharp.Views.WPF</PackagingGroup>
+    <DefineConstants>$(DefineConstants);__DESKTOP__;__WPF__</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\binding\SkiaSharp\SkiaSharp.csproj" />
+    <ProjectReference Include="..\SkiaSharp.Views.Desktop.Common\SkiaSharp.Views.Desktop.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SkiaSharp.Views.Shared\Properties\SkiaSharpViewsAssemblyInfo.cs" Link="Properties\SkiaSharpViewsAssemblyInfo.cs" />
+  </ItemGroup>
+</Project>
