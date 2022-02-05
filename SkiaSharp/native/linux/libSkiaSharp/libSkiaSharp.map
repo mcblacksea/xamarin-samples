@@ -1,7 +1,0 @@
-libSkiaSharp {
-    global:
-        sk_*;
-        gr_*;
-    local:
-        *;
-};

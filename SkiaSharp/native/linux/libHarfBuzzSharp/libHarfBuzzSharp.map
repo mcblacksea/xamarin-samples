@@ -1,6 +1,0 @@
-libHarfBuzzSharp {
-    global:
-        hb_*;
-    local:
-        *;
-};

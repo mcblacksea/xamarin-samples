@@ -1,5 +1,0 @@
-<Project>
-
-  <Import Project="$(MSBuildThisFileDirectory)SkiaSharp.Build.targets" />
-
-</Project>
