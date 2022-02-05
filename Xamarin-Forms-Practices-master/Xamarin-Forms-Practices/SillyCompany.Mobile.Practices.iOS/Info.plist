@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>9.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>Silly!</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.sillycompany.mobile.practices</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Font/OpenSans-Bold.ttf</string>
+		<string>Font/OpenSans-BoldItalic.ttf</string>
+		<string>Font/OpenSans-ExtraBold.ttf</string>
+		<string>Font/OpenSans-ExtraBoldItalic.ttf</string>
+		<string>Font/OpenSans-Italic.ttf</string>
+		<string>Font/OpenSans-Light.ttf</string>
+		<string>Font/OpenSans-LightItalic.ttf</string>
+		<string>Font/OpenSans-Regular.ttf</string>
+		<string>Font/OpenSans-SemiBold.ttf</string>
+		<string>Font/OpenSans-SemiBoldItalic.ttf</string>
+	</array>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon-60@2x</string>
+		<string>Icon-60@3x</string>
+		<string>Icon-76</string>
+		<string>Icon-76@2x</string>
+		<string>Icon-Small-40</string>
+		<string>Icon-Small-40@2x</string>
+		<string>Icon-Small-40@3x</string>
+		<string>Icon-Small</string>
+		<string>Icon-Small@2x</string>
+		<string>Icon-Small@3x</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Media.xcassets/LaunchImages.launchimage</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+  <key>UIViewControllerBasedStatusBarAppearance</key>
+  <false/>
+</dict>
+</plist>

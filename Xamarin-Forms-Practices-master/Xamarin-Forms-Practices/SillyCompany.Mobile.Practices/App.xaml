@@ -1,0 +1,404 @@
+﻿<Application x:Class="SillyCompany.Mobile.Practices.App"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:SillyCompany.Mobile.Practices.Presentation.Converters;assembly=SillyCompany.Mobile.Practices"
+             xmlns:loader="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
+             xmlns:localization="clr-namespace:SillyCompany.Mobile.Practices.Localization;assembly=SillyCompany.Mobile.Practices"
+             xmlns:sho="http://sharpnado.com"
+             xmlns:views="clr-namespace:SillyCompany.Mobile.Practices.Presentation.Views;assembly=SillyCompany.Mobile.Practices">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <converters:IsNotNullConverter x:Key="IsNotNullConverter" />
+            <converters:IsNullConverter x:Key="IsNullConverter" />
+            <converters:NullToValueConverter x:Key="NullToValueConverter" />
+            <converters:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <converters:ExceptionToImageSourceConverter x:Key="ExceptionToImageSourceConverter" />
+            <converters:ExceptionToErrorMessageConverter x:Key="ExceptionToErrorMessageConverter" />
+            <converters:SizeScalingByScreenConverter x:Key="SizeScalingByScreenConverter" />
+
+            <OnPlatform x:Key="ToolbarHeight" x:TypeArguments="GridLength">
+                <On Platform="iOS">140</On>
+                <On Platform="Android">120</On>
+            </OnPlatform>
+
+            <Thickness x:Key="StatusBarHeightPadding"
+                       Bottom="0"
+                       Left="0"
+                       Right="0">
+                <Thickness.Top>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS">20</On>
+                        <On Platform="Android">0</On>
+                    </OnPlatform>
+                </Thickness.Top>
+            </Thickness>
+
+            <GridLength x:Key="HeaderHeight">40</GridLength>
+
+            <Color x:Key="DarkSurface">#121212</Color>
+            <!--  Very light accent color  -->
+            <Color x:Key="LightSurface">#FAF8F9</Color>
+            <Color x:Key="AcrylicSurface">#E4E4E4</Color>
+            <Color x:Key="NeumorphismSurface">#F0F0F3</Color>
+
+            <Color x:Key="DarkElevation2dp">#212121</Color>
+            <Color x:Key="DarkElevation4dp">#272727</Color>
+            <Color x:Key="DarkElevation8dp">#2D2D2D</Color>
+            <Color x:Key="DarkElevation12dp">#323232</Color>
+            <Color x:Key="DarkElevation16dp">#353535</Color>
+            <Color x:Key="DarkElevation24dp">#373737</Color>
+
+            <Color x:Key="PrimaryColor">#FF0266</Color>
+            <Color x:Key="SecondaryColor">#6200EE</Color>
+
+            <Color x:Key="OnPrimaryColor">#000000</Color>
+            <Color x:Key="OnSecondaryColor">#000000</Color>
+
+            <Color x:Key="OnSurfaceColor">#FFFFFF</Color>
+
+            <Color x:Key="AcrylicFrameBackgroundColor">#F1F1F1</Color>
+
+            <Color x:Key="NavigationBarLightColor">#FFFFFF</Color>
+            <Color x:Key="BarTextColor">#FFFFFF</Color>
+
+            <Color x:Key="BlackC90">#414142</Color>
+            <Color x:Key="BlackC50">#939598</Color>
+            <Color x:Key="BlackC25">#C8C8C8</Color>
+            <Color x:Key="BlackC05">#F1F1F2</Color>
+            <Color x:Key="Black.20">#33000000</Color>
+            <Color x:Key="Blue">#008DA8</Color>
+            <Color x:Key="Red">#EE3524</Color>
+            <Color x:Key="Orange">#F6A01A</Color>
+            <Color x:Key="White">#F8F8F8</Color>
+
+            <Color x:Key="Primary">#121212</Color>
+            <Color x:Key="Accent">#FF0266</Color>
+            <Color x:Key="TransparentAccent">#00121212</Color>
+
+            <Style ApplyToDerivedTypes="True" TargetType="ContentPage">
+                <Setter Property="Padding">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS">0, 20, 0, 0</On>
+                            <On Platform="Android">0, 0, 0, 0</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BackgroundColor" Value="{DynamicResource DynamicBackgroundColor}" />
+            </Style>
+
+            <Style ApplyToDerivedTypes="True" TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{DynamicResource DynamicNavigationBarColor}" />
+                <Setter Property="BarTextColor" Value="{DynamicResource DynamicBarTextColor}" />
+            </Style>
+
+            <x:Double x:Key="SmallPadding">4</x:Double>
+            <x:Double x:Key="MediumPadding">8</x:Double>
+            <x:Double x:Key="StandardPadding">16</x:Double>
+
+            <Thickness x:Key="SmallTopThickness" Top="{StaticResource SmallPadding}" />
+
+            <Thickness x:Key="MediumTopThickness" Top="{StaticResource MediumPadding}" />
+
+            <Thickness x:Key="StandardTopThickness" Top="{StaticResource StandardPadding}" />
+
+            <Thickness x:Key="SmallThickness"
+                       Bottom="{StaticResource SmallPadding}"
+                       Left="{StaticResource SmallPadding}"
+                       Right="{StaticResource SmallPadding}"
+                       Top="{StaticResource SmallPadding}" />
+
+            <Thickness x:Key="MediumThickness"
+                       Bottom="{StaticResource MediumPadding}"
+                       Left="{StaticResource MediumPadding}"
+                       Right="{StaticResource MediumPadding}"
+                       Top="{StaticResource MediumPadding}" />
+
+            <Thickness x:Key="StandardThickness"
+                       Bottom="{StaticResource StandardPadding}"
+                       Left="{StaticResource StandardPadding}"
+                       Right="{StaticResource StandardPadding}"
+                       Top="{StaticResource StandardPadding}" />
+
+            <x:Double x:Key="SmallSpacing">4</x:Double>
+            <x:Double x:Key="MediumSpacing">8</x:Double>
+            <x:Double x:Key="StandardSpacing">16</x:Double>
+
+            <x:Double x:Key="TextSizeHeadline">20</x:Double>
+            <x:Double x:Key="TextSizeTitle">18</x:Double>
+            <x:Double x:Key="TextSizeSubhead">16</x:Double>
+            <x:Double x:Key="TextSizeBody">14</x:Double>
+            <x:Double x:Key="TextSizeCaption">12</x:Double>
+            <x:Double x:Key="TextSizeSmallCaption">11</x:Double>
+
+            <Color x:Key="TextPrimaryDarkColor">#FFFFFF</Color>
+            <Color x:Key="TextSecondaryDarkColor">#C0C0C0</Color>
+            <Color x:Key="TextTernaryDarkColor">#A0A0A0</Color>
+
+            <Color x:Key="TextPrimaryLightColor">#B0000000</Color>
+            <Color x:Key="TextSecondaryLightColor">#80000000</Color>
+            <Color x:Key="TextTernaryLightColor">#C8C8C8</Color>
+
+            <x:Double x:Key="ListViewSingleLineHeight">48</x:Double>
+            <x:Double x:Key="ListViewTwoLinesHeight">72</x:Double>
+            <x:Double x:Key="ListViewThreeLinesHeight">88</x:Double>
+
+            <OnPlatform x:Key="FontBold" x:TypeArguments="x:String">
+                <On Platform="iOS">OpenSans-Bold</On>
+                <On Platform="Android">OpenSans-Bold.ttf#Open Sans</On>
+            </OnPlatform>
+            <OnPlatform x:Key="FontExtraBold" x:TypeArguments="x:String">
+                <On Platform="iOS">OpenSans-ExtraBold</On>
+                <On Platform="Android">OpenSans-ExtraBold.ttf#Open Sans</On>
+            </OnPlatform>
+            <OnPlatform x:Key="FontBoldItalic" x:TypeArguments="x:String">
+                <On Platform="iOS">OpenSans-BoldItalic</On>
+                <On Platform="Android">OpenSans-BoldItalic.ttf#Open Sans</On>
+            </OnPlatform>
+            <OnPlatform x:Key="FontRegular" x:TypeArguments="x:String">
+                <On Platform="iOS">OpenSans-Regular</On>
+                <On Platform="Android">OpenSans-Regular.ttf#Open Sans</On>
+            </OnPlatform>
+            <OnPlatform x:Key="FontItalic" x:TypeArguments="x:String">
+                <On Platform="iOS">OpenSans-Italic</On>
+                <On Platform="Android">OpenSans-Italic.ttf#Open Sans</On>
+            </OnPlatform>
+            <OnPlatform x:Key="FontSemiBold" x:TypeArguments="x:String">
+                <On Platform="iOS">OpenSans-SemiBold</On>
+                <On Platform="Android">OpenSans-SemiBold.ttf#Open Sans</On>
+            </OnPlatform>
+            <OnPlatform x:Key="FontLight" x:TypeArguments="x:String">
+                <On Platform="iOS">OpenSans-Light</On>
+                <On Platform="Android">OpenSans-Light.ttf#Open Sans</On>
+            </OnPlatform>
+
+            <Style x:Key="TextHeadline" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontExtraBold}" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicPrimaryTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextSizeHeadline}" />
+            </Style>
+
+            <Style x:Key="TextTitle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontBold}" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicPrimaryTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextSizeTitle}" />
+            </Style>
+
+            <Style x:Key="TextSubheadline" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontExtraBold}" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicPrimaryTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextSizeSubhead}" />
+            </Style>
+
+            <Style x:Key="TextSubhead" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontSemiBold}" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicPrimaryTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextSizeSubhead}" />
+            </Style>
+
+            <Style x:Key="TextSubheadSecondary" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontSemiBold}" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicSecondaryTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextSizeSubhead}" />
+            </Style>
+
+            <Style x:Key="TextBody" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontRegular}" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicPrimaryTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextSizeBody}" />
+            </Style>
+
+            <Style x:Key="TextBodySecondary" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontLight}" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicPrimaryTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextSizeBody}" />
+            </Style>
+
+            <Style x:Key="TextCaption" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontRegular}" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicPrimaryTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextSizeCaption}" />
+            </Style>
+
+            <Style x:Key="TextSmallCaption"
+                   BasedOn="{StaticResource TextCaption}"
+                   TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource TextSizeSmallCaption}" />
+            </Style>
+
+            <Style x:Key="TextCaptionSecondary" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource FontLight}" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicPrimaryTextColor}" />
+                <Setter Property="FontSize" Value="{StaticResource TextSizeCaption}" />
+            </Style>
+
+            <Style x:Key="TextCenter"
+                   BasedOn="{StaticResource TextBody}"
+                   TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="TextSubheadCenter"
+                   BasedOn="{StaticResource TextSubhead}"
+                   TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="TextSubheadSecondaryCenter"
+                   BasedOn="{StaticResource TextSubheadSecondary}"
+                   TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="TextError"
+                   BasedOn="{StaticResource TextCenter}"
+                   TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicSecondaryTextColor}" />
+                <Setter Property="LineBreakMode" Value="CharacterWrap" />
+            </Style>
+
+            <Style x:Key="TextSnackbar"
+                   BasedOn="{StaticResource TextCenter}"
+                   TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="LineBreakMode" Value="CharacterWrap" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Style>
+
+            <Style x:Key="TextHeader"
+                   BasedOn="{StaticResource TextSubheadline}"
+                   TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="End" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="Margin" Value="0, 0, 0, 8" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicHeaderTextColor}" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="FontFamily" Value="{StaticResource FontSemiBold}" />
+            </Style>
+
+            <Style x:Key="SmallAvatar"
+                   ApplyToDerivedTypes="True"
+                   TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="WidthRequest" Value="50" />
+            </Style>
+
+            <Style x:Key="MediumAvatar"
+                   ApplyToDerivedTypes="True"
+                   TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="80" />
+                <Setter Property="WidthRequest" Value="80" />
+            </Style>
+
+            <Style x:Key="LargeAvatar"
+                   ApplyToDerivedTypes="True"
+                   TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="WidthRequest" Value="100" />
+            </Style>
+
+            <Style x:Key="SillyTaskLoader" TargetType="loader:TaskLoaderView">
+                <Setter Property="AccentColor" Value="{StaticResource Accent}" />
+                <Setter Property="FontFamily" Value="{StaticResource FontItalic}" />
+                <Setter Property="EmptyStateMessage" Value="{localization:Translate Empty_Screen}" />
+                <Setter Property="EmptyStateImageSource" Value="dougal.png" />
+                <Setter Property="RetryButtonText" Value="{localization:Translate ErrorButton_Retry}" />
+                <Setter Property="TextColor" Value="{DynamicResource DynamicPrimaryTextColor}" />
+                <Setter Property="ErrorImageConverter" Value="{StaticResource ExceptionToImageSourceConverter}" />
+                <Setter Property="ErrorMessageConverter" Value="{StaticResource ExceptionToErrorMessageConverter}" />
+            </Style>
+
+            <DataTemplate x:Key="SillyDataTemplate">
+                <ViewCell>
+                    <views:SillySquareCell sho:ViewEffect.TouchFeedbackColor="{StaticResource Accent}"
+                                           sho:TapCommandEffect.Tap="{Binding OnItemTappedCommand}"
+                                           sho:TapCommandEffect.TapParameter="{Binding .}" />
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="AlternateSillyDataTemplate">
+                <ViewCell>
+                    <views:AlternateSillySquareCell sho:ViewEffect.TouchFeedbackColor="{StaticResource Accent}"
+                                                    sho:TapCommandEffect.Tap="{Binding OnItemTappedCommand}"
+                                                    sho:TapCommandEffect.TapParameter="{Binding .}" />
+                </ViewCell>
+            </DataTemplate>
+
+            <views:SillyDudeTemplateSelector x:Key="DudeTemplateSelector"
+                                             AlternateSillySquare="{StaticResource AlternateSillyDataTemplate}"
+                                             SillySquare="{StaticResource SillyDataTemplate}" />
+
+            <Style TargetType="sho:BottomTabItem">
+                <Setter Property="SelectedTabColor" Value="{StaticResource Accent}" />
+                <Setter Property="UnselectedLabelColor" Value="Gray" />
+                <Setter Property="UnselectedIconColor" Value="LightGray" />
+                <Setter Property="FontFamily" Value="{StaticResource FontLight}" />
+                <Setter Property="LabelSize" Value="14" />
+                <Setter Property="IconSize" Value="28" />
+                <Setter Property="IsTextVisible" Value="False" />
+            </Style>
+
+            <Style ApplyToDerivedTypes="True" TargetType="sho:MaterialFrame">
+                <!--<Setter Property="MaterialTheme" Value="AcrylicBlur" />
+                <Setter Property="AndroidBlurRadius" Value="10" />-->
+                <Setter Property="MaterialBlurStyle" Value="{DynamicResource DynamicBlurStyle}" />
+                <Setter Property="MaterialTheme" Value="{DynamicResource DynamicMaterialTheme}" />
+                <Setter Property="CornerRadius" Value="{DynamicResource DynamicCornerRadius}" />
+            </Style>
+
+            <sho:SingleShade x:Key="LightTopShadow"
+                             BlurRadius="10"
+                             Opacity="0.1"
+                             Offset="0,-8"
+                             Color="Black" />
+
+            <sho:ImmutableShades x:Key="AcrylicTopShadow">
+                <sho:Shade BlurRadius="0"
+                           Opacity="1"
+                           Offset="0,-2"
+                           Color="White" />
+                <sho:Shade BlurRadius="10"
+                           Opacity="0.1"
+                           Offset="0,8"
+                           Color="Black" />
+            </sho:ImmutableShades>
+
+            <sho:SingleShade x:Key="LightBottomShadow"
+                             BlurRadius="10"
+                             Opacity="0.1"
+                             Offset="0,8"
+                             Color="Black" />
+
+            <sho:SingleShade x:Key="SegmentedBottomShadow"
+                             BlurRadius="10"
+                             Opacity="0.2"
+                             Offset="0,8"
+                             Color="{StaticResource Accent}" />
+
+            <sho:ImmutableShades x:Key="NoShadow" />
+
+            <sho:NeumorphismShades x:Key="NeumorphismShadow" />
+
+            <sho:NeumorphismShades x:Key="ThinNeumorphismShadow"
+                                   LowerOffset="8, 6"
+                                   UpperOffset="-8,-6" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="SillyCompany.Mobile.Practices.Presentation.Views.SillyInfiniteGridPeoplePage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:loader="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
+             xmlns:loc="clr-namespace:SillyCompany.Mobile.Practices.Localization;assembly=SillyCompany.Mobile.Practices"
+             xmlns:sho="http://sharpnado.com"
+             xmlns:viewModels="clr-namespace:SillyCompany.Mobile.Practices.Presentation.ViewModels;assembly=SillyCompany.Mobile.Practices"
+             Title="{loc:Translate SillyInfiniteGridPeople_Title}"
+             x:DataType="viewModels:SillyInfiniteGridPeopleVm">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="HorizontalListView" TargetType="sho:HorizontalListView">
+                <Setter Property="ItemHeight">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS">120</On>
+                            <On Platform="Android">120</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="ItemWidth">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS">100</On>
+                            <On Platform="Android">110</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="ItemSpacing">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="iOS">8</On>
+                            <On Platform="Android">8</On>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="CollectionPadding" Value="8" />
+            </Style>
+
+            <DataTemplate x:Key="DudeDataTemplate">
+                <ViewCell>
+                    <sho:MaterialFrame Margin="4"
+                                       Padding="{StaticResource StandardThickness}"
+                                       Elevation="4">
+
+                        <StackLayout x:DataType="viewModels:SillyDudeVmo"
+                                     Spacing="0"
+                                     Orientation="Vertical">
+
+                            <Frame Style="{StaticResource SmallAvatar}"
+                                   Padding="0"
+                                   VerticalOptions="StartAndExpand"
+                                   CornerRadius="25"
+                                   HasShadow="False"
+                                   IsClippedToBounds="True">
+                                <Image Style="{StaticResource SmallAvatar}"
+                                       Aspect="AspectFill"
+                                       Source="{Binding ImageUrl}" />
+                            </Frame>
+                            <Label Style="{StaticResource TextSmallCaption}"
+                                   Margin="{StaticResource MediumTopThickness}"
+                                   HorizontalTextAlignment="Center"
+                                   Text="{Binding Name}" />
+                        </StackLayout>
+                    </sho:MaterialFrame>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <loader:TaskLoaderView Style="{StaticResource SillyTaskLoader}" TaskLoaderNotifier="{Binding SillyPeopleLoaderNotifier}">
+            <!--<pullToRefresh:PullToRefreshLayout IsPullToRefreshEnabled="True"
+                                               IsRefreshing="{Binding SillyPeopleLoader.ShowRefresher}"
+                                               RefreshColor="Blue"
+                                               RefreshCommand="{Binding SillyPeopleLoader.RefreshCommand}">-->
+            <sho:GridView Style="{StaticResource HorizontalListView}"
+                          CurrentIndex="{Binding CurrentIndex}"
+                          EnableDragAndDrop="True"
+                          InfiniteListLoader="{Binding SillyPeoplePaginator}"
+                          ScrollBeganCommand="{Binding OnScrollBeginCommand}"
+                          ScrollEndedCommand="{Binding OnScrollEndCommand}"
+                          ItemTemplate="{StaticResource DudeDataTemplate}"
+                          ItemsSource="{Binding SillyPeople}" />
+            <!--</pullToRefresh:PullToRefreshLayout>-->
+        </loader:TaskLoaderView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentView x:Class="SillyCompany.Mobile.Practices.Presentation.Views.TabsLayout.GridView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
+             xmlns:materialFrame="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             xmlns:shades="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+             xmlns:sho="http://sharpnado.com"
+             xmlns:tabsLayout="clr-namespace:SillyCompany.Mobile.Practices.Presentation.ViewModels.TabsLayout;assembly=SillyCompany.Mobile.Practices"
+             xmlns:viewModels="clr-namespace:SillyCompany.Mobile.Practices.Presentation.ViewModels;assembly=SillyCompany.Mobile.Practices"
+             xmlns:views="clr-namespace:SillyCompany.Mobile.Practices.Presentation.Views;assembly=SillyCompany.Mobile.Practices"
+             x:DataType="tabsLayout:GridPageViewModel">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="HorizontalListView" TargetType="sho:HorizontalListView">
+                <Setter Property="ItemHeight" Value="130" />
+                <Setter Property="CollectionPadding" Value="10,20,10,75" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <customViews:TaskLoaderView Style="{StaticResource SillyTaskLoader}" TaskLoaderNotifier="{Binding SillyPeopleLoaderNotifier}">
+            <RefreshView IsRefreshing="{Binding SillyPeopleLoaderNotifier.ShowRefresher}"
+                         RefreshColor="{StaticResource Accent}"
+                         Command="{Binding SillyPeopleLoaderNotifier.RefreshCommand}">
+                <sho:CollectionView Style="{StaticResource HorizontalListView}"
+                                    CollectionLayout="Vertical"
+                                    CurrentIndex="{Binding CurrentIndex}"
+                                    EnableDragAndDrop="True"
+                                    InfiniteListLoader="{Binding SillyPeoplePaginator}"
+                                    ScrollBeganCommand="{Binding OnScrollBeginCommand}"
+                                    ScrollEndedCommand="{Binding OnScrollEndCommand}"
+                                    TapCommand="{Binding GoToSillyDudeCommand}"
+                                    ItemsSource="{Binding SillyPeople}">
+                    <!--  TapCommand="{Binding GoToSillyDudeCommand}">  -->
+                    <!--  ColumnCount="3"  -->
+                    <sho:CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="viewModels:SillyDudeVmo">
+                            <sho:DraggableViewCell x:Name="DraggableViewCell" IsDraggable="{Binding IsMovable}">
+                                <ContentView>
+                                    <shades:Shadows CornerRadius="{DynamicResource DynamicCornerRadius}" Shades="{DynamicResource DynamicShadow}">
+                                        <views:SillyCell Margin="16,7,16,13"
+                                                         Padding="{StaticResource StandardThickness}"
+                                                         Elevation="{DynamicResource DynamicElevation}">
+                                            <Frame.Triggers>
+                                                <DataTrigger Binding="{Binding Source={x:Reference DraggableViewCell}, Path=IsDragAndDropping}"
+                                                             TargetType="materialFrame:MaterialFrame"
+                                                             Value="True">
+                                                    <Setter Property="Elevation" Value="8" />
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+                                        </views:SillyCell>
+                                    </shades:Shadows>
+                                </ContentView>
+                            </sho:DraggableViewCell>
+                        </DataTemplate>
+                    </sho:CollectionView.ItemTemplate>
+                </sho:CollectionView>
+            </RefreshView>
+        </customViews:TaskLoaderView>
+    </ContentView.Content>
+</ContentView>
