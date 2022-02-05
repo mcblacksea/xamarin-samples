@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Coffee.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Coffee.Controls"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    BackgroundColor="{StaticResource AccentColor}">
+
+    <Grid>
+
+        <ContentView x:Name="MyBagView">
+
+            <Grid>
+                <Grid
+                    x:Name="PeekDetails"
+                    ColumnDefinitions="*, AUTO"
+                    RowSpacing="0"
+                    VerticalOptions="End">
+
+                    <ScrollView Grid.Column="0" Orientation="Horizontal">
+                        <StackLayout
+                            x:Name="PeekItems"
+                            Margin="10"
+                            BindableLayout.ItemsSource="{Binding Items}"
+                            HeightRequest="50"
+                            Orientation="Horizontal"
+                            Spacing="0"
+                            VerticalOptions="End">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="50" VerticalOptions="Center">
+                                        <Ellipse
+                                            Fill="Black"
+                                            HeightRequest="40"
+                                            HorizontalOptions="Center"
+                                            Opacity=".3"
+                                            VerticalOptions="Center"
+                                            WidthRequest="40" />
+                                        <Image
+                                            HeightRequest="50"
+                                            Source="{Binding ImageUrl}"
+                                            TranslationY="-5"
+                                            VerticalOptions="Center"
+                                            WidthRequest="50">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Ellipse
+                                            Fill="White"
+                                            HeightRequest="16"
+                                            HorizontalOptions="Center"
+                                            StrokeThickness="0"
+                                            TranslationX="16"
+                                            TranslationY="-16"
+                                            VerticalOptions="Center"
+                                            WidthRequest="16" />
+                                        <Label
+                                            HeightRequest="16"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource PeekBadgeText}"
+                                            Text="{Binding Size}"
+                                            TranslationX="16"
+                                            TranslationY="-16"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                    <StackLayout
+                        Grid.Column="1"
+                        Margin="0,0,20,0"
+                        HeightRequest="50"
+                        HorizontalOptions="End"
+                        Orientation="Horizontal"
+                        Spacing="0"
+                        VerticalOptions="Center">
+                        <Label Style="{StaticResource PeekTotalText}" Text="₤" />
+                        <controls:FlipLabel
+                            x:Name="PeekDollar"
+                            AnimationSpeed="100"
+                            NumberOfCharacters="1"
+                            Text="1"
+                            TextStyle="{StaticResource PeekTotalText}" />
+                        <Label Style="{StaticResource PeekTotalText}" Text="." />
+                        <controls:FlipLabel
+                            x:Name="PeekCents"
+                            AnimationSpeed="100"
+                            NumberOfCharacters="2"
+                            Text="45"
+                            TextStyle="{StaticResource PeekTotalText}" />
+                    </StackLayout>
+
+                </Grid>
+
+                <Grid
+                    x:Name="MyBagDetails"
+                    IsVisible="True"
+                    RowDefinitions="*, Auto, Auto"
+                    RowSpacing="0">
+                    <BoxView Grid.RowSpan="3" />
+
+                    <StackLayout Margin="20,60,20,20">
+                        <Label
+                            HorizontalOptions="Center"
+                            Style="{StaticResource HeaderText}"
+                            Text="My Bag"
+                            TextColor="White" />
+
+                        <CollectionView Margin="0,20,0,0" ItemsSource="{Binding Items}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="60, *, AUTO">
+                                        <Image
+                                            HeightRequest="60"
+                                            Source="{Binding ImageUrl}"
+                                            WidthRequest="60" />
+                                        <StackLayout Grid.Column="1" Spacing="0">
+                                            <Label Style="{StaticResource ShoppingItemHeader}" Text="{Binding Name}" />
+                                            <Label Style="{StaticResource ShoppingItemDetail}" Text="{Binding Size, StringFormat='Size {0}'}" />
+                                            <Label Style="{StaticResource ShoppingItemDetail}" Text="{Binding Price, StringFormat='{0:C2}'}" />
+                                        </StackLayout>
+
+                                        <Label
+                                            Grid.Column="2"
+                                            HorizontalTextAlignment="End"
+                                            Style="{StaticResource HeaderTextLight}"
+                                            Text="{Binding Quantity, StringFormat='x{0}'}"
+                                            VerticalOptions="Center" />
+
+                                    </Grid>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </StackLayout>
+
+                    <Grid
+                        Grid.Row="1"
+                        Margin="20,0"
+                        ColumnDefinitions="*,*"
+                        RowDefinitions="Auto, Auto">
+
+                        <BoxView
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"
+                            Margin="0,20"
+                            HeightRequest="1"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Start"
+                            Color="{StaticResource AccentColorLight}" />
+                        <Label
+                            Grid.Row="1"
+                            Style="{StaticResource HeaderTextLight}"
+                            Text="Total" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            Style="{StaticResource HeaderTextLight}"
+                            Text="{Binding TotalPrice, StringFormat='{0:C2}'}" />
+
+                    </Grid>
+
+                    <Button
+                        Grid.Row="2"
+                        Margin="20"
+                        BackgroundColor="White"
+                        CornerRadius="20"
+                        HeightRequest="40"
+                        Text="Confirm Order"
+                        TextColor="{StaticResource AccentColor}" />
+
+
+                </Grid>
+            </Grid>
+        </ContentView>
+
+        <ContentView x:Name="FrontCard" IsVisible="True">
+            <Grid RowDefinitions="*, AUTO, AUTO, AUTO, 25">
+
+                <!--  background of the card  -->
+                <BoxView
+                    Grid.RowSpan="5"
+                    Margin="0,-25,0,0"
+                    CornerRadius="0,0,25,25"
+                    Color="{StaticResource FrontCardBackground}" />
+
+                <Ellipse
+                    Fill="#F4F4F4"
+                    HeightRequest="250"
+                    HorizontalOptions="Center"
+                    StrokeThickness="0"
+                    VerticalOptions="Center"
+                    WidthRequest="250" />
+
+                <Image
+                    HorizontalOptions="Center"
+                    Source="{Binding SelectedItem.ImageUrl}"
+                    VerticalOptions="Center" />
+
+                <StackLayout Grid.Row="1" Margin="20">
+                    <Label
+                        HorizontalOptions="Center"
+                        Style="{StaticResource HeaderText}"
+                        Text="{Binding SelectedItem.Name}" />
+                    <Label Style="{StaticResource DescriptionText}" Text="{Binding SelectedItem.Description}" />
+                </StackLayout>
+
+                <Grid
+                    Grid.Row="2"
+                    Margin="20"
+                    ColumnDefinitions="*, Auto"
+                    HeightRequest="60">
+
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Spacing="0"
+                        VerticalOptions="Center">
+                        <Label Style="{StaticResource SmallCurrencyText}" Text="₤" />
+                        <controls:FlipLabel
+                            x:Name="DollarFlip"
+                            AnimationSpeed="100"
+                            NumberOfCharacters="1"
+                            Text="1"
+                            TextStyle="{StaticResource LargeCurrencyText}" />
+                        <Label Style="{StaticResource SmallCurrencyText}" Text="." />
+                        <controls:FlipLabel
+                            x:Name="CentsFlip"
+                            AnimationSpeed="100"
+                            NumberOfCharacters="2"
+                            Text="45"
+                            TextStyle="{StaticResource SmallCurrencyText}" />
+                    </StackLayout>
+
+                    <Grid Grid.Column="1" ColumnDefinitions="60,60,60">
+                        <Rectangle
+                            x:Name="SmallRect"
+                            Fill="#F8F8F8"
+                            HeightRequest="60"
+                            RadiusX="4"
+                            RadiusY="4"
+                            Stroke="#E1E1E1"
+                            StrokeThickness="2"
+                            WidthRequest="60">
+                            <Rectangle.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SmallSized_Tapped" />
+                            </Rectangle.GestureRecognizers>
+                        </Rectangle>
+                        <Path
+                            x:Name="SmallCup"
+                            Data="M4 13H24L22 40H6ZM3 7H25A2 2 0 0127 9V11A2 2 0 0125 13H3A2 2 0 011 11V9A2 2 0 013 7ZM6 1H22A2 2 0 0124 3V7H4V3A2 2 0 016 1Z"
+                            HorizontalOptions="Center"
+                            InputTransparent="True"
+                            Scale=".6"
+                            Stroke="#1B714B"
+                            StrokeThickness="2"
+                            VerticalOptions="Center" />
+
+                        <Rectangle
+                            x:Name="MediumRect"
+                            Grid.Column="1"
+                            Fill="#F8F8F8"
+                            HeightRequest="60"
+                            RadiusX="4"
+                            RadiusY="4"
+                            Stroke="#E1E1E1"
+                            StrokeThickness="2"
+                            WidthRequest="60">
+                            <Rectangle.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="MediumSized_Tapped" />
+                            </Rectangle.GestureRecognizers>
+
+                        </Rectangle>
+                        <Path
+                            x:Name="MediumCup"
+                            Grid.Column="1"
+                            Data="M4 13H24L22 40H6ZM3 7H25A2 2 0 0127 9V11A2 2 0 0125 13H3A2 2 0 011 11V9A2 2 0 013 7ZM6 1H22A2 2 0 0124 3V7H4V3A2 2 0 016 1Z"
+                            HorizontalOptions="Center"
+                            InputTransparent="True"
+                            Scale=".8"
+                            Stroke="#E1E1E1"
+                            StrokeThickness="2"
+                            VerticalOptions="Center" />
+
+                        <Rectangle
+                            x:Name="LargeRect"
+                            Grid.Column="2"
+                            Fill="#F8F8F8"
+                            HeightRequest="60"
+                            RadiusX="4"
+                            RadiusY="4"
+                            Stroke="#E1E1E1"
+                            StrokeThickness="2"
+                            WidthRequest="60">
+                            <Rectangle.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="LargeSized_Tapped" />
+                            </Rectangle.GestureRecognizers>
+                        </Rectangle>
+                        <Path
+                            x:Name="LargeCup"
+                            Grid.Column="2"
+                            Data="M4 13H24L22 40H6ZM3 7H25A2 2 0 0127 9V11A2 2 0 0125 13H3A2 2 0 011 11V9A2 2 0 013 7ZM6 1H22A2 2 0 0124 3V7H4V3A2 2 0 016 1Z"
+                            HorizontalOptions="Center"
+                            InputTransparent="True"
+                            Scale="1"
+                            Stroke="#E1E1E1"
+                            StrokeThickness="2"
+                            VerticalOptions="Center" />
+
+                        <Rectangle
+                            x:Name="SelectionRect"
+                            HeightRequest="60"
+                            InputTransparent="True"
+                            RadiusX="4"
+                            RadiusY="4"
+                            Stroke="#1B714B"
+                            StrokeThickness="2"
+                            WidthRequest="60" />
+                    </Grid>
+                </Grid>
+
+                <Button
+                    x:Name="AddToBag"
+                    Grid.Row="3"
+                    Margin="20,0"
+                    BackgroundColor="{StaticResource AccentColor}"
+                    Clicked="AddToBag_Clicked"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Text="Add To Bag"
+                    TextColor="White"
+                    TextTransform="None" />
+                <lottie:AnimationView
+                    x:Name="animationView"
+                    Grid.Row="3"
+                    Animation="tick.json"
+                    AnimationSource="AssetOrBundle"
+                    HeightRequest="40"
+                    HorizontalOptions="Center"
+                    IsVisible="False"
+                    OnFinishedAnimation="animationView_OnFinishedAnimation"
+                    RepeatCount="0"
+                    RepeatMode="Restart"
+                    VerticalOptions="Center"
+                    WidthRequest="40" />
+
+                <!--  hit box for the gesture recognizer  -->
+                <BoxView Grid.Row="4">
+                    <BoxView.GestureRecognizers>
+                        <!--<PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />-->
+                        <SwipeGestureRecognizer Direction="Up" Swiped="SwipeUp_Swiped" />
+                        <SwipeGestureRecognizer Direction="Down" Swiped="SwipeDown_Swiped" />
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+
+                <!--  thumb  -->
+                <BoxView
+                    x:Name="Thumb"
+                    Grid.Row="4"
+                    CornerRadius="2"
+                    HeightRequest="4"
+                    HorizontalOptions="Center"
+                    InputTransparent="True"
+                    Opacity="0"
+                    VerticalOptions="Center"
+                    WidthRequest="80"
+                    Color="{StaticResource TextColorLight}" />
+
+            </Grid>
+
+
+
+        </ContentView>
+
+    </Grid>
+
+</ContentPage>
