@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="TurnipTracker.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:sharpnado="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    mc:Ignorable="d">
+    <Application.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="IconProfile">&#xf2bd;</x:String>
+            <x:String x:Key="IconTracking">&#xf1fe;</x:String>
+            <x:String x:Key="IconFriends">&#xf0c0;</x:String>
+            <x:String x:Key="IconAbout">&#xf129;</x:String>
+            <x:String x:Key="IconFavorite">&#xf005;</x:String>
+            <x:String x:Key="IconTrash">&#xf2ed;</x:String>
+            <x:String x:Key="IconSend">&#xf1d8;</x:String>
+            <x:String x:Key="IconInbox">&#xf01c;</x:String>
+            <x:String x:Key="IconBlog">&#xf0ac;</x:String>
+            <x:String x:Key="IconGitHub">&#xf09b;</x:String>
+            <x:String x:Key="IconTwitter">&#xf099;</x:String>
+            <x:String x:Key="IconSave">&#xf0c7;</x:String>
+            <x:String x:Key="IconRefresh">&#xf021;</x:String>
+            <x:String x:Key="IconThumbsUp">&#xf164;</x:String>
+            <x:String x:Key="IconWarning">&#xf071;</x:String>
+            <x:String x:Key="IconFriendAdd">&#xf234;</x:String>
+            <x:String x:Key="IconApprove">&#xf4fc;</x:String>
+            <x:String x:Key="IconDeny">&#xf00d;</x:String>
+            <x:String x:Key="IconCoffee">&#xf0f4;</x:String>
+            <x:String x:Key="IconWrench">&#xf0ad;</x:String>
+            <x:String x:Key="IconCode">&#xf121;</x:String>
+            <x:String x:Key="IconCompute">&#xf1ec;</x:String>
+            <x:String x:Key="IconSettings">&#xf013;</x:String>
+            <x:String x:Key="IconHome">&#xf965;</x:String>
+            <x:String x:Key="IconProfileBadge">&#xf007;</x:String>
+            <x:String x:Key="IconBFF">&#xf500;</x:String>
+            <x:String x:Key="IconGateOpen">&#xf52b;</x:String>
+            <x:String x:Key="IconDodoCode">&#xf535;</x:String>
+            <x:String x:Key="IconShare">&#xf1e0;</x:String>
+            <x:String x:Key="IconStar">&#xf005;</x:String>
+
+            <x:String x:Key="IconGraph">&#xf1fe;</x:String>
+
+            <Color x:Key="NavigationPrimary">#71B6F7</Color>
+            <Color x:Key="AcrylicSurface">#E6E6E6</Color>
+
+            <Color x:Key="GraphMax">#FFF09C</Color>
+            <Color x:Key="GraphMin">#EE6668</Color>
+            <Color x:Key="GraphBuy">#DBB4F8</Color>
+            <Color x:Key="GraphGradiantStart">#C93335</Color>
+            <Color x:Key="GraphGradiantEnd">#50C93335</Color>
+
+            <Color x:Key="AcrylicFrameBackgroundColor">#F1F1F1</Color>
+
+            <Color x:Key="LoadingBackgroundColor">#95E6E6E6</Color>
+
+            <Color x:Key="AccentColor">#00E000</Color>
+
+            <Color x:Key="TextPrimaryColor">#6F6F6F</Color>
+            <Color x:Key="TextSecondaryColor">#60000000</Color>
+            <Color x:Key="TextTernaryColor">#40000000</Color>
+            <x:Int32 x:Key="BottomBarHeight">66</x:Int32>
+
+            <Style x:Key="AcrylicFrame" TargetType="sharpnado:MaterialFrame">
+                <Setter Property="MaterialTheme" Value="Acrylic" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="LightThemeBackgroundColor" Value="{StaticResource AcrylicFrameBackgroundColor}" />
+            </Style>
+
+            <Style
+                x:Key="AcrylicButton"
+                BasedOn="{StaticResource AcrylicFrame}"
+                TargetType="sharpnado:MaterialFrame">
+                <Setter Property="CornerRadius" Value="27" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="54" />
+                <Setter Property="Padding" Value="0" />
+            </Style>
+
+            <Style
+                x:Key="AcrylicFAB"
+                BasedOn="{StaticResource AcrylicFrame}"
+                TargetType="sharpnado:MaterialFrame">
+                <Setter Property="CornerRadius" Value="27" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="HeightRequest" Value="54" />
+                <Setter Property="WidthRequest" Value="54" />
+                <Setter Property="Padding" Value="0" />
+            </Style>
+
+            <Style
+                x:Key="AcrylicFABSmall"
+                BasedOn="{StaticResource AcrylicFrame}"
+                TargetType="sharpnado:MaterialFrame">
+                <Setter Property="CornerRadius" Value="21" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="42" />
+                <Setter Property="WidthRequest" Value="42" />
+                <Setter Property="Padding" Value="0" />
+            </Style>
+
+            <Style x:Key="SocialPancake" TargetType="pancake:PancakeView">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="CornerRadius" Value="20" />
+            </Style>
+
+            <Style x:Key="SocialPancakeWithText" TargetType="pancake:PancakeView">
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="CornerRadius" Value="22" />
+                <Setter Property="HeightRequest" Value="44" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="BadgePancake" TargetType="pancake:PancakeView">
+                <Setter Property="Padding" Value="8,0" />
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+            </Style>
+
+            <Style x:Key="SocialLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="{StaticResource TextPrimaryColor}" />
+            </Style>
+
+            <Style x:Key="ButtonRoundedCorners" TargetType="Button">
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="BorderColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="CornerRadius" Value="22" />
+                <Setter Property="HeightRequest" Value="44" />
+                <Setter Property="Padding" Value="12,0" />
+                <Setter Property="BackgroundColor" Value="{StaticResource AcrylicFrameBackgroundColor}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource NavigationPrimary}" />
+            </Style>
+
+            <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="Color" Value="{StaticResource NavigationPrimary}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

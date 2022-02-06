@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="TurnipTracker.View.ProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:controls="clr-namespace:TurnipTracker.Controls"
+    xmlns:converters="clr-namespace:TurnipTracker.Converters"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:effectsview="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:TurnipTracker.Model"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:sharpnado="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:view="clr-namespace:TurnipTracker.View"
+    xmlns:viewmodel="clr-namespace:TurnipTracker.ViewModel"
+    ios:Page.UseSafeArea="True"
+    x:DataType="viewmodel:ProfileViewModel"
+    BackgroundColor="{StaticResource NavigationPrimary}"
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="ModalAnimated"
+    mc:Ignorable="d">
+    <d:ContentPage.BindingContext>
+        <viewmodel:ProfileViewModel />
+    </d:ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:SelectedDayColorConverter x:Key="SelectedDayColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <ScrollView>
+            <Grid
+                Padding="{OnPlatform Android='0,12,0,0',
+                                     iOS='0,12,0,0'}"
+                BackgroundColor="{StaticResource NavigationPrimary}"
+                RowSpacing="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label
+                    FontFamily="AnimalCrossing"
+                    FontSize="38"
+                    HorizontalOptions="Center"
+                    Text="Profile"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+                <pancake:PancakeView
+                    Margin="0,0,12,0"
+                    AutomationProperties.HelpText="Button - Close Page"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    HorizontalOptions="End"
+                    Style="{StaticResource SocialPancake}"
+                    VerticalOptions="Center">
+                    <effectsview:SfEffectsView IsEnabled="{Binding IsNotBusy}" TouchUpCommand="{Binding CloseCommand}">
+                        <Label
+                            FontFamily="FA-S"
+                            Style="{StaticResource SocialLabel}"
+                            Text="{StaticResource IconDeny}" />
+                    </effectsview:SfEffectsView>
+                </pancake:PancakeView>
+                <pancake:PancakeView
+                    Grid.Row="1"
+                    Padding="12,12,12,0"
+                    BackgroundColor="{StaticResource AcrylicSurface}"
+                    CornerRadius="36,36,0,0">
+                    <StackLayout Padding="12" Spacing="4">
+
+                        <Label
+                            Margin="24,0,0,0"
+                            FontFamily="AnimalCrossing"
+                            FontSize="Medium"
+                            Text="Nickname*"
+                            TextColor="{StaticResource TextPrimaryColor}" />
+                        <sharpnado:MaterialFrame
+                            Padding="{OnPlatform Android='12,0',
+                                                 iOS='12'}"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource AcrylicFrame}">
+                            <maskededit:SfMaskedEdit
+                                BackgroundColor="Transparent"
+                                BorderColor="{StaticResource AcrylicFrameBackgroundColor}"
+                                FontSize="24"
+                                IsEnabled="{Binding IsNotBusy}"
+                                TextColor="{StaticResource TextPrimaryColor}"
+                                Value="{Binding Profile.Name}" />
+                        </sharpnado:MaterialFrame>
+
+                        <Label
+                            Margin="24,12,0,0"
+                            FontFamily="AnimalCrossing"
+                            FontSize="Medium"
+                            Text="Island Name*"
+                            TextColor="{StaticResource TextPrimaryColor}" />
+                        <sharpnado:MaterialFrame
+                            Padding="{OnPlatform Android='12,0',
+                                                 iOS='12'}"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource AcrylicFrame}">
+                            <maskededit:SfMaskedEdit
+                                BackgroundColor="Transparent"
+                                BorderColor="{StaticResource AcrylicFrameBackgroundColor}"
+                                FontSize="24"
+                                IsEnabled="{Binding IsNotBusy}"
+                                TextColor="{StaticResource TextPrimaryColor}"
+                                Value="{Binding Profile.IslandName}" />
+                        </sharpnado:MaterialFrame>
+                        <Label
+                            Margin="24,12,0,0"
+                            FontFamily="AnimalCrossing"
+                            FontSize="Medium"
+                            Text="Fruit"
+                            TextColor="{StaticResource TextPrimaryColor}" />
+                        <sharpnado:MaterialFrame
+                            Padding="12,0"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource AcrylicFrame}">
+                            <combobox:SfComboBox
+                                x:Name="ComboBoxFruit"
+                                BackgroundColor="Transparent"
+                                BorderColor="Transparent"
+                                DropDownBackgroundColor="White"
+                                DropDownItemHeight="50"
+                                DropDownTextSize="24"
+                                HeightRequest="55"
+                                SelectedIndex="{Binding Profile.Fruit, Mode=TwoWay}"
+                                TextColor="{StaticResource TextPrimaryColor}"
+                                TextSize="20"
+                                VerticalOptions="Start">
+                                <combobox:SfComboBox.ComboBoxSource>
+                                    <ListCollection:List x:TypeArguments="x:String">
+                                        <x:String>🍎 Apple</x:String>
+                                        <x:String>🍒 Cherry</x:String>
+                                        <x:String>🍊 Orange</x:String>
+                                        <x:String>🍑 Peach</x:String>
+                                        <x:String>🍐 Pear</x:String>
+                                    </ListCollection:List>
+                                </combobox:SfComboBox.ComboBoxSource>
+                            </combobox:SfComboBox>
+                        </sharpnado:MaterialFrame>
+
+                        <Label
+                            Margin="24,12,0,0"
+                            FontFamily="AnimalCrossing"
+                            FontSize="Medium"
+                            Text="Switch Friend Code"
+                            TextColor="{StaticResource TextPrimaryColor}" />
+
+                        <sharpnado:MaterialFrame
+                            Padding="{OnPlatform Android='12,0',
+                                                 iOS='12'}"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource AcrylicFrame}">
+                            <maskededit:SfMaskedEdit
+                                BackgroundColor="Transparent"
+                                BorderColor="{StaticResource AcrylicFrameBackgroundColor}"
+                                ClearButtonVisibility="WhileEditing"
+                                FontSize="24"
+                                IsEnabled="{Binding IsNotBusy}"
+                                Keyboard="Numeric"
+                                Mask="SW-0000-0000-0000"
+                                TextColor="{StaticResource TextPrimaryColor}"
+                                VerticalOptions="Center"
+                                Value="{Binding Profile.FriendCode}" />
+                        </sharpnado:MaterialFrame>
+
+
+                        <sharpnado:MaterialFrame
+                            Margin="0,24,0,0"
+                            HorizontalOptions="End"
+                            Style="{StaticResource AcrylicButton}">
+                            <effectsview:SfEffectsView
+                                x:Name="ButtonSave"
+                                Padding="36,0"
+                                CornerRadius="27"
+                                IsEnabled="{Binding IsNotBusy}"
+                                TouchUpCommand="{Binding UpsertProfileCommand}"
+                                TouchUpCommandParameter="{Binding Source={RelativeSource Self}}">
+                                <StackLayout
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal"
+                                    Spacing="12">
+                                    <Label
+                                        FontFamily="FA-S"
+                                        FontSize="18"
+                                        Text="{StaticResource IconRefresh}"
+                                        TextColor="{Binding NeedsSync, Converter={StaticResource SelectedDayColorConverter}}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        FontSize="18"
+                                        Text="{Binding SyncCreateText}"
+                                        TextColor="{Binding NeedsSync, Converter={StaticResource SelectedDayColorConverter}}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                            </effectsview:SfEffectsView>
+                        </sharpnado:MaterialFrame>
+
+                        <Label
+                            FontSize="Micro"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding NeedsProfile}"
+                            Text="Fill in your info and press Create to get started."
+                            TextColor="{StaticResource TextPrimaryColor}"
+                            VerticalOptions="CenterAndExpand" />
+
+                    </StackLayout>
+
+                </pancake:PancakeView>
+
+
+            </Grid>
+        </ScrollView>
+
+        <pancake:PancakeView
+            Padding="36,12"
+            BackgroundColor="{StaticResource AcrylicSurface}"
+            CornerRadius="56,0,0,56"
+            HorizontalOptions="Center"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center">
+            <busyindicator:SfBusyIndicator
+                Title="Syncing profile..."
+                AnimationType="Box"
+                EnableAnimation="{Binding IsBusy}"
+                TextColor="{StaticResource TextPrimaryColor}"
+                ViewBoxHeight="100"
+                ViewBoxWidth="100"
+                Duration=".2" />
+        </pancake:PancakeView>
+    </Grid>
+</ContentPage>

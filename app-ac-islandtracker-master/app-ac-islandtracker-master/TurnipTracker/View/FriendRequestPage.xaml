@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TurnipTracker.View.FriendRequestPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:effectsview="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:shared="clr-namespace:TurnipTracker.Shared;assembly=TurnipTracker.Shared"
+    xmlns:sharpnado="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
+    xmlns:viewmodel="clr-namespace:TurnipTracker.ViewModel"
+    x:DataType="viewmodel:FriendRequestViewModel"
+    BackgroundColor="{StaticResource NavigationPrimary}"
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="ModalAnimated"
+    mc:Ignorable="d">
+    <ContentPage.BindingContext>
+        <viewmodel:FriendRequestViewModel />
+    </ContentPage.BindingContext>
+    <Grid
+        Padding="{OnPlatform Android='0,12,0,0',
+                             iOS='0,12,0,0'}"
+        BackgroundColor="{StaticResource NavigationPrimary}"
+        RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label
+            Grid.ColumnSpan="2"
+            FontFamily="AnimalCrossing"
+            FontSize="38"
+            HorizontalOptions="Center"
+            Text="Requests"
+            TextColor="White"
+            VerticalOptions="Center" />
+        <pancake:PancakeView
+            Grid.ColumnSpan="2"
+            Margin="0,0,12,0"
+            AutomationProperties.HelpText="Button - Close Page"
+            AutomationProperties.IsInAccessibleTree="True"
+            HorizontalOptions="End"
+            Style="{StaticResource SocialPancake}"
+            VerticalOptions="Center">
+            <effectsview:SfEffectsView
+                CornerRadius="20"
+                IsEnabled="{Binding IsNotBusy}"
+                TouchUpCommand="{Binding CloseCommand}">
+                <Label
+                    FontFamily="FA-S"
+                    Style="{StaticResource SocialLabel}"
+                    Text="{StaticResource IconDeny}" />
+            </effectsview:SfEffectsView>
+        </pancake:PancakeView>
+        <pancake:PancakeView
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Padding="12,12,12,0"
+            BackgroundColor="{StaticResource AcrylicSurface}"
+            CornerRadius="36,36,0,0">
+            <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+                <CollectionView
+                    BackgroundColor="{StaticResource AcrylicSurface}"
+                    ItemsSource="{Binding FriendRequests}"
+                    SelectionMode="None"
+                    VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="shared:PendingFriendRequest">
+
+                            <Grid Padding="0" BackgroundColor="Transparent">
+                                <shimmer:SfShimmer
+                                    Padding="12"
+                                    CascadeInputTransparent="False"
+                                    InputTransparent="False"
+                                    IsActive="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:FriendRequestViewModel}}, Path=IsBusy}"
+                                    Type="Article"
+                                    VerticalOptions="FillAndExpand">
+                                    <shimmer:SfShimmer.Content>
+                                        <Grid Padding="4,12">
+                                            <sharpnado:MaterialFrame Padding="18" Style="{StaticResource AcrylicFrame}">
+                                                <Grid ColumnSpacing="12" RowSpacing="4">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Label
+                                                        FontSize="Large"
+                                                        Text="{Binding Name}"
+                                                        TextColor="{StaticResource TextPrimaryColor}"
+                                                        VerticalOptions="EndAndExpand" />
+                                                    <Label
+                                                        Grid.Row="1"
+                                                        FontSize="Medium"
+                                                        Text="{Binding IslandName}"
+                                                        TextColor="{StaticResource TextPrimaryColor}"
+                                                        VerticalOptions="StartAndExpand" />
+
+
+                                                    <StackLayout
+                                                        Grid.Row="2"
+                                                        Margin="0,4,0,0"
+                                                        Padding="4"
+                                                        HorizontalOptions="End"
+                                                        Orientation="Horizontal"
+                                                        Spacing="12">
+
+                                                        <Button
+                                                            BorderColor="Red"
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:FriendRequestViewModel}}, Path=DenyFriendRequestCommand}"
+                                                            CommandParameter="{Binding .}"
+                                                            Style="{StaticResource ButtonRoundedCorners}"
+                                                            Text="Deny"
+                                                            TextColor="Red" />
+
+                                                        <Button
+                                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:FriendRequestViewModel}}, Path=ApproveFriendRequestCommand}"
+                                                            CommandParameter="{Binding .}"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource ButtonRoundedCorners}"
+                                                            Text="Approve" />
+
+                                                    </StackLayout>
+
+                                                </Grid>
+                                            </sharpnado:MaterialFrame>
+                                        </Grid>
+                                    </shimmer:SfShimmer.Content>
+                                </shimmer:SfShimmer>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <!--<CollectionView.Footer>
+                        <StackLayout HorizontalOptions="Center">
+                            <Label Text="{Binding LastUpdate}" TextColor="{StaticResource TextPrimaryColor}" HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </CollectionView.Footer>-->
+                </CollectionView>
+            </RefreshView>
+        </pancake:PancakeView>
+
+        <StackLayout
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Padding="12"
+            HorizontalOptions="FillAndExpand"
+            IsVisible="{Binding ShowNoFriends}"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Label
+                    FontFamily="FA-S"
+                    FontSize="72"
+                    HorizontalOptions="Center"
+                    Text="{StaticResource IconFriendAdd}"
+                    TextColor="{StaticResource TextPrimaryColor}" />
+                <Label
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="No new friend requests."
+                    TextColor="{StaticResource TextPrimaryColor}" />
+                <sharpnado:MaterialFrame
+                    Margin="4,12"
+                    Padding="0"
+                    AutomationProperties.HelpText="Button - Refresh Friend Request Information"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource AcrylicFrame}">
+                    <effectsview:SfEffectsView
+                        Padding="24,12"
+                        CornerRadius="10"
+                        TouchUpCommand="{Binding RefreshCommand}">
+                        <Label
+                            FontFamily="FA-S"
+                            FontSize="24"
+                            HorizontalOptions="Center"
+                            Text="&#xf021;"
+                            TextColor="{StaticResource TextPrimaryColor}"
+                            VerticalOptions="Center" />
+                    </effectsview:SfEffectsView>
+                </sharpnado:MaterialFrame>
+
+                <sharpnado:MaterialFrame
+                    Padding="0"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource AcrylicButton}">
+                    <effectsview:SfEffectsView
+                        Padding="18,0"
+                        CornerRadius="10"
+                        TouchUpCommand="{Binding ShareWithFriendsCommand}"
+                        TouchUpCommandParameter="{Binding Source={RelativeSource Self}}">
+                        <Label
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            Text="Share App with Friends"
+                            TextColor="{StaticResource TextPrimaryColor}"
+                            VerticalOptions="Center" />
+                    </effectsview:SfEffectsView>
+                </sharpnado:MaterialFrame>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>

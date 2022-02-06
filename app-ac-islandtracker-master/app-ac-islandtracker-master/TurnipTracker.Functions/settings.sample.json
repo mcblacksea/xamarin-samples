@@ -1,0 +1,11 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "MAX_FRIENDS": "15",
+    "MAX_FREE_FRIENDS": "2",
+    "ENABLE_PRO": "false",
+    "AUTO_PRO": "false"
+  }
+}

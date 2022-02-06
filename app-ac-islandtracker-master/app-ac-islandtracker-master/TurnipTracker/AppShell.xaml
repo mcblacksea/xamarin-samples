@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       mc:Ignorable="d"
+       xmlns:view="clr-namespace:TurnipTracker.View"
+       Title="Island Tracker" x:Class="TurnipTracker.AppShell">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarTitleColor" Value="White" />
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+
+    <TabBar x:Name="MainTabBar">
+        <Tab Title="Home" Route="home">
+            <Tab.Icon>
+                <FontImageSource Glyph="{StaticResource IconHome}" FontFamily="FA-S" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate view:HomePage}"/>
+        </Tab>
+        <Tab Title="Tracking" Route="tracking">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FA-S" Glyph="{StaticResource IconTracking}"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate view:TrackingPage}"/>
+        </Tab>
+        <Tab Title="Friends" Route="friends">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FA-S" Glyph="{StaticResource IconFriends}"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate view:FriendsPage}"/>
+        </Tab>
+    </TabBar>
+  
+</Shell>
