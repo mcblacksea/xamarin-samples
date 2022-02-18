@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rg:PopupPage
+    x:Class="SampleApp.Views.CalendarPickerPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:rg="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:local="clr-namespace:SampleApp.ViewModels"
+    xmlns:plugin="clr-namespace:Xamarin.Plugin.Calendar.Controls;assembly=Xamarin.Plugin.Calendar"
+    CloseWhenBackgroundIsClicked="False"
+    mc:Ignorable="d">
+
+    <rg:PopupPage.BindingContext>
+        <local:CalendarPickerPopupViewModel />
+    </rg:PopupPage.BindingContext>
+
+    <rg:PopupPage.Content>
+        <Frame
+            BackgroundColor="White"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <StackLayout
+                IsClippedToBounds="True"
+                Orientation="Vertical"
+                Spacing="3">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Choose Date"
+                    VerticalOptions="Center" />
+                <plugin:Calendar
+                    Padding="10,0"
+                    FooterSectionVisible="False"
+                    HorizontalOptions="Center"
+                    MaximumDate="{Binding MaximumDate}"
+                    MinimumDate="{Binding MinimumDate}"
+                    ShownDate="{Binding InitalDate}"
+                    SelectedDate="{Binding SelectedDate}"
+                    VerticalOptions="Center"
+                    WidthRequest="320" />
+
+                <FlexLayout
+                    JustifyContent="SpaceBetween">
+                    <Button
+                        Command="{Binding ClearCommand}"
+                        HorizontalOptions="EndAndExpand"
+                        Text="Clear" />
+                    <Button
+                        Command="{Binding SuccessCommand}"
+                        HorizontalOptions="EndAndExpand"
+                        Text="Select" />
+                    <Button Command="{Binding CancelCommand}" Text="Cancel" />
+                </FlexLayout>
+            </StackLayout>
+        </Frame>
+    </rg:PopupPage.Content>
+</rg:PopupPage>

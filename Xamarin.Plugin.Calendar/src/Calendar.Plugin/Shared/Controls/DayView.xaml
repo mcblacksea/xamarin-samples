@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Xamarin.Plugin.Calendar.Controls.DayView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:models="clr-namespace:Xamarin.Plugin.Calendar.Models" 
+    x:DataType="models:DayModel"
+    x:Name="dayView"
+    BackgroundColor="{Binding BackgroundFullEventColor}">
+    <Frame 
+        BackgroundColor="{Binding BackgroundColor}"
+        CornerRadius="{Binding DayViewCornerRadius}"
+        HeightRequest="{Binding DayViewSize}"
+        OutlineColor="{Binding OutlineColor}"
+        WidthRequest="{Binding DayViewSize}"
+        HorizontalOptions="Center"
+        Padding="0"
+        HasShadow="False">
+        <FlexLayout 
+            Direction="{Binding EventLayoutDirection}"
+            AlignItems="Center"
+            JustifyContent="Center">
+            <Label
+                Style="{Binding DaysLabelStyle}"
+                Text="{Binding Date.Day}"
+                TextColor="{Binding TextColor}"
+                HorizontalTextAlignment="Center"
+            />
+            <Frame
+                BackgroundColor="{Binding EventColor}"
+                IsVisible="{Binding IsEventDotVisible}"
+                WidthRequest="8"
+                HeightRequest="8"
+                Padding="0"
+                CornerRadius="4"
+                HasShadow="False"
+            />
+        </FlexLayout>
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnTapped" />
+        </Frame.GestureRecognizers>
+    </Frame>
+</ContentView>
+    

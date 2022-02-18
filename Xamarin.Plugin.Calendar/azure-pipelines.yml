@@ -1,0 +1,152 @@
+pr:
+  branches:
+    include:
+    - master
+
+trigger:
+- master
+
+variables:
+  buildPlatform: 'AnyCPU'
+  buildConfiguration: 'Release'
+  nugetVersion: '1.4.$(Build.BuildId)'
+  monoVersion: 6_12_7
+  dotentVersion: 5.x
+
+jobs:
+- job: 'Nuget'
+  displayName: 'Build Nuget'
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+    - task: NuGetToolInstaller@1
+    - task: UseDotNet@2
+      displayName: 'Use dotnet sdk $(dotentVersion)'
+      inputs:
+        version: $(dotentVersion)
+
+    - task: NuGetCommand@2
+      displayName: 'Nuget restore solution'
+      inputs:
+        restoreSolution: '**/CalendarPlugin.csproj'
+
+    - task: MSBuild@1
+      inputs:
+        solution: '**/CalendarPlugin.csproj'
+        msbuildArguments: '/p:Version=$(nugetVersion)'
+        configuration: '$(BuildConfiguration)'
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          OUTPUT_PATH=src/Calendar.Plugin/bin/Release
+
+          echo "$(nugetVersion)" > $OUTPUT_PATH/NUGET_VERSION
+          echo "$(Build.SourceVersion)" > $OUTPUT_PATH/SOURCE_VERSION
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: nupkg'
+      inputs:
+        PathtoPublish: 'src\Calendar.Plugin\bin\Release\'
+        ArtifactName: nupkg
+
+- job: 'iOSSampleApp'
+  displayName: 'Build iOS Sample App'
+  dependsOn:
+    - Nuget
+  pool:
+    vmImage: 'macOS-latest'
+    demands: 
+      - msbuild
+      - visualstudio
+  steps:
+    - task: NuGetToolInstaller@1
+    - task: UseDotNet@2
+      displayName: 'Use dotnet sdk $(dotentVersion)'
+      inputs:
+        version: $(dotentVersion)
+
+    - script: sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh $monoVersion
+      displayName: 'Selecting the Xamarin SDK version'
+
+    - task: DownloadBuildArtifacts@0
+      displayName: "Download PackNugetPackage artifacts"
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        downloadPath: '$(build.binariesDirectory)/nuget/'
+        artifactName: 'nupkg'
+
+    - task: Bash@3
+      displayName: "Replace project ref with nuget reference"
+      inputs:
+        filePath: '.azure-devops/use-nuget.sh'
+
+    - task: Bash@3
+      displayName: "Restore nuget packages"
+      inputs:
+        targetType: 'inline'
+        script: |
+          nuget restore src/Calendar.Plugin.Sample/SampleApp/SampleApp.csproj -NonInteractive -Source $(build.binariesDirectory)/nuget/nupkg/ -Source https://api.nuget.org/v3/index.json
+          nuget restore src/Calendar.Plugin.Sample/SampleApp.iOS/SampleApp.iOS.csproj -NonInteractive -Source $(build.binariesDirectory)/nuget/nupkg/ -Source https://api.nuget.org/v3/index.json
+
+          chmod 755 $(Build.Repository.LocalPath)/.azure-devops/msbuild.sh
+
+    - task: XamariniOS@2
+      inputs:
+        buildToolLocation: '$(Build.Repository.LocalPath)/.azure-devops/msbuild.sh'
+        solutionFile: '**/SampleApp.iOS.csproj'
+        configuration: '$(buildConfiguration)'
+        packageApp: false
+        runNugetRestore: false
+        buildForSimulator: true
+
+- job: 'AndroidSampleApp'
+  displayName: 'Build Android Sample App'
+  dependsOn:
+    - Nuget
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+    - task: NuGetToolInstaller@1
+    - task: UseDotNet@2
+      displayName: 'Use dotnet sdk $(dotentVersion)'
+      inputs:
+        version: $(dotentVersion)
+
+    - task: DownloadBuildArtifacts@0
+      displayName: "Download PackNugetPackage artifacts"
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        downloadPath: '$(build.binariesDirectory)/nuget/'
+        artifactName: 'nupkg'
+
+    - task: PowerShell@2
+      displayName: "Replace project ref with nuget reference"
+      inputs:
+        filePath: '.azure-devops\use-nuget.ps1'
+
+    - task: CmdLine@2
+      displayName: "Restore nuget packages"
+      inputs:
+        script: |
+          nuget restore src\Calendar.Plugin.Sample\SampleApp\SampleApp.csproj -NonInteractive -Source $(build.binariesDirectory)\nuget\nupkg\ -Source https://api.nuget.org/v3/index.json
+          nuget restore src\Calendar.Plugin.Sample\SampleApp.Android\SampleApp.Android.csproj -NonInteractive -Source $(build.binariesDirectory)\nuget\nupkg\ -Source https://api.nuget.org/v3/index.json
+
+    - task: XamarinAndroid@1
+      displayName: 'Build Xamarin.Android project SampleApp.Android.csproj'
+      inputs:
+        projectFile: '**/SampleApp.Android.csproj'
+        createAppPackage: true
+        outputDirectory: '$(build.binariesdirectory)/$(BuildConfiguration)'
+        jdkOption: 'JDKVersion'
+        clean: false
+        configuration: '$(BuildConfiguration)'
+        msbuildVersionOption: latest
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Android App artifacts'
+      inputs:
+        PathToPublish: '$(build.binariesdirectory)/$(BuildConfiguration)'
+        ArtifactName: 'SampleApp.Android'
