@@ -45,7 +45,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
         <Compile Include="Shared\**\*.cs" />
     </ItemGroup>
 
