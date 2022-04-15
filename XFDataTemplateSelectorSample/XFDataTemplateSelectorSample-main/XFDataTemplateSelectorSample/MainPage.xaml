@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:tempsel="clr-namespace:XFDataTemplateSelectorSample"
+             x:Class="XFDataTemplateSelectorSample.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SubscribeTemplate">
+                <Label Text="{Binding .}" TextDecorations="Underline" TextColor="Red"/>
+            </DataTemplate>
+
+            <DataTemplate x:Key="OtherTemplate">
+                <Label Text="{Binding .}" TextColor="Green"/>
+            </DataTemplate>
+
+            <tempsel:SubscribeDataTemplateSelector x:Key="templateSelector" SubscribeTemplate="{StaticResource SubscribeTemplate}" OtherTemplate="{StaticResource OtherTemplate}" /> 
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="DataTemplateSelector Sample" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <CollectionView ItemsSource="{Binding SampleItems}" ItemTemplate="{StaticResource templateSelector}">
+
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>
