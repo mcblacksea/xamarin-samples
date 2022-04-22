@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
+    <DisableFody>true</DisableFody>
+    <IsTestProject>true</IsTestProject>
+    <GenerateProgramFile>false</GenerateProgramFile>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Realm.Tests\EmbeddedResources\nunit3-junit.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+
+    <Compile Include="..\..\Realm.Tests\TransformHelpers.cs" Link="TransformHelpers.cs" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.0" />
+    <PackageReference Include="NUnit" Version="3.11.0" />
+    <PackageReference Include="NUnitLite" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.3.1">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </PackageReference>
+    <PackageReference Include="FodyHelpers" Version="6.*" />
+    <ProjectReference Include="..\AssemblyToProcess\AssemblyToProcess.csproj" />
+    <ProjectReference Include="..\Realm.FakeForWeaverTests\Realm.FakeForWeaverTests.csproj" />
+    <ProjectReference Include="..\RealmFreeAssemblyToProcess\RealmFreeAssemblyToProcess.csproj" />
+    <ProjectReference Include="..\..\..\Realm\Realm.Fody\Realm.Fody.csproj">
+      <Aliases>realm</Aliases>
+    </ProjectReference>
+    <Reference Include="@(WeaverFiles)">
+      <Aliases>propertychanged</Aliases>
+    </Reference>
+  </ItemGroup>
+
+</Project>
