@@ -1,0 +1,369 @@
+LibVLCSharp version 3.6.6
+=========================
+* Add support to Eto.Forms UI framework thanks to @rafntor.
+* Core: Make Core.Initialize() optional.
+* WPF: Add defensive checks around video view detach process.
+* WPF: Fix .NET 4.x support.
+* WPF: Remove WinForms dependency.
+* Documentation improvements.
+
+LibVLCSharp version 3.6.5
+=========================
+* Fix Xamarin.Forms iOS MediaElement startup regression. https://code.videolan.org/videolan/LibVLCSharp/-/issues/529
+
+LibVLCSharp version 3.6.4
+=========================
+* hotfix for net6 target - third time's the charm.
+* Add .NET 6 support for WinForms and WPF integrations.
+
+LibVLCSharp version 3.6.3
+=========================
+* hotfix for net6 target - missing comoilation directive.
+* build: use C# 9
+
+LibVLCSharp version 3.6.2
+=========================
+* media: rewrite slashes for windows https://code.videolan.org/videolan/LibVLCSharp/-/issues/517
+* media: clarify error message if native media constructor fails
+* iOS: Add additional defensive lifetime check https://code.videolan.org/videolan/LibVLCSharp/-/issues/520
+* WPF: Fix WPF VideoView foreground window position bug by @Yelo420 / Philip https://code.videolan.org/videolan/LibVLCSharp/-/issues/523
+* core: Add .NET 6 support
+
+LibVLCSharp version 3.6.1
+=========================
+* tvOS [BREAKING CHANGE]: Due to upstream breaking packaging change, LibVLCSharp 3.6.1 and above only work with LibVLC.tvOS 3.3.17 and above.
+see https://code.videolan.org/videolan/libvlc-nuget/-/commit/031ad01a30053208a657d61cbc340f703ac04f32 for more details
+* MediaElement XF: Add visibility property for track and lock buttons by @egbakou
+* MediaElement XF: Fixes TrackSelection taking too much space @egbakou
+* nuget: Use readmes for nuget.org pages
+* documentation improvements
+* Core: add mediaplayer helper SeekTo method
+
+LibVLCSharp version 3.6.0
+=========================
+* Core: Media.AddSlave now has an URI overload, like the Media ctor
+* XF: Add Lock screen feature to the MediaElement by @egbakou https://github.com/videolan/libvlcsharp/pull/223
+* XF [BREAKING CHANGE]: Add Video track selection feature and rework other track management for the MediaElement by @egbakou https://github.com/videolan/libvlcsharp/pull/225
+* WPF: Fix airspace issue to synchronize content over video by @DengQingFeng https://github.com/videolan/libvlcsharp/pull/226
+* WPF: Add TabControl support for the VideoView by @Yelo420 https://github.com/videolan/libvlcsharp/pull/227
+* CI and build improvements.
+
+LibVLCSharp version 3.5.1
+=========================
+* Core: fix Media leaks
+* Core: remove check potentially preventing proper disposal
+* Core: fix support for self contained single file apps https://code.videolan.org/videolan/LibVLCSharp/-/issues/470
+* Core: docs: add hint in exception message for missing libvlc on Android 
+* WPF/WinForms: Use stable versions TFMs 
+* Samples: Update all dependencies
+* Avalonia: Bump reference to include fix for https://code.videolan.org/videolan/LibVLCSharp/-/issues/458
+* Uno: Uno: Temporary workaround to fix CI build until we move to Uno 3 https://github.com/unoplatform/uno/issues/6137
+* docs and licensing: Mention libvlcsharp commercial licensing.
+
+LibVLCSharp version 3.5.0
+=========================
+* Xamarin.Forms: Fix namespace clashes with newer XF versions.
+* CI and build improvements
+* Various docs improvements
+* Core: Use unicode charset for LoadLibrary https://code.videolan.org/videolan/LibVLCSharp/-/issues/453
+
+LibVLCSharp.Avalonia version 3.4.9-alpha01
+=========================
+* Initial Avalonia support (Linux, macOS, Windows) by @shawnallen85
+
+LibVLCSharp version 3.4.9
+=========================
+* documentation improvements
+* improve samples with systematic libvlc resources disposal
+* WinForms: Add additional null checks
+* Core: Add easier way to enable verbose debug logs, hint with VS intellisense
+* Core: Fix incorrect libvlc interop for imem non-seekable streams by @jeremyVignelles https://github.com/videolan/libvlcsharp/pull/129
+* WPF: Improve the view to make it more reliable in some situations by @SkinnySackboy https://github.com/videolan/libvlcsharp/pull/172
+
+LibVLCSharp version 3.4.8
+=========================
+* documentation improvements
+* Fix memory leak https://code.videolan.org/videolan/LibVLCSharp/-/issues/367
+* Core: Avoid copy in StreamMediaInput by @jeremyVignelles
+* Core: Remove Mediaplayer.Stop() call in Mediaplayer.Dispose() by @mct62
+* Enable nightly build continuous deployment on feedz for 3.x branch
+
+LibVLCSharp version 3.4.7
+=========================
+* documentation updates
+* MediaElement: Fix display bug in landscape mode on iOS by @kakone https://code.videolan.org/videolan/LibVLCSharp/-/issues/270
+
+LibVLCSharp version 3.4.6
+=========================
+* documentation updates
+* android: set audio resampler automatically by @encrypt0r
+* core: 
+- fix libvlc log interop for macOS netcore target
+- refactoring libvlc loading.
+* fix WPF xamarin.forms support https://code.videolan.org/videolan/LibVLCSharp/-/issues/364
+
+LibVLCSharp version 3.4.5
+=========================
+* Uno.Android: Fix android packaging import by @kakone. One additional Xamarin.Android tooling issue is still blocking Uno.Android support though.
+* MediaPlayer: Add full chapter descriptions by new contributor @igor-rif-shevchenko
+* Uno / UWP MediaElement: Various fixes by @kakone
+* Core: Add FormattedLog helper.
+* Media: Add libvlc option extra ctor param for convenience.
+
+LibVLCSharp version 3.4.4
+=========================
+* Core: Improve LibVLC loading error messages
+* Core: Remove dead Unity code
+* Core: Bring back C#8 support, nullables, .netstandard2.1 target. Work by @jeremyVignelles, users need an up to date Xamarin.Android build otherwise their linker will freeze. https://code.videolan.org/videolan/LibVLCSharp/-/issues/78
+* Core: Add new constructor to media that accepts a URI, by new contributor @mhmd_azeez https://code.videolan.org/videolan/LibVLCSharp/-/merge_requests/12
+* Uno.UWP: Customize LibVLCSharp.Uno.pri file generation by @kakone, fixes Uno UWP support https://code.videolan.org/videolan/LibVLCSharp/-/issues/294
+
+LibVLCSharp version 3.4.3
+=========================
+* Fix build for older C# compilers
+* Centralize and simplify static callbacks management, and introduce new Media constructor with MediaInput abstraction https://github.com/videolan/libvlcsharp/pull/87
+* Always load libcpp on Android https://github.com/videolan/libvlcsharp/pull/92
+* Align features description in the csproj with the readme.
+* Align msbuild sdk extras usage in Uno project with the rest of the solution.
+
+LibVLCSharp version 3.4.2
+=========================
+* Android: Fix libvlc loading failure on Android < 17 https://code.videolan.org/videolan/LibVLCSharp/issues/280
+* WPF: Fix memory leak in the VideoView by @srollinet https://github.com/videolan/libvlcsharp/pull/90
+
+LibVLCSharp version 3.4.1
+=========================
+* Android: Fix initialization error code check
+* VolumeChanged event bug workaround https://github.com/videolan/libvlcsharp/pull/83
+* Revert part of the C# 8 Nullable support PR to fix https://code.videolan.org/videolan/LibVLCSharp/issues/269
+* CI: Move to Cake and enable sample build
+* Fix callback interop https://github.com/videolan/libvlcsharp/pull/84
+
+LibVLCSharp version 3.4.0
+=========================
+* Logging interop: Fix libvlc logging for Apple platforms
+* Documentation: Markdown pages are now part of the git repo
+* Adds MediaPlayerElement for Uno Platform: https://github.com/videolan/libvlcsharp/pull/77 by @kakone
+* Build: Remove unnecessary defines
+* Enable C# 8 nullable support for all libvlcsharp projects: https://github.com/videolan/libvlcsharp/pull/75 by @jeremyVignelles
+* UWP: Fix crash when VideoView is created Collapsed and allow swapchain creation after the videoview is created (when visibility changes) https://code.videolan.org/videolan/LibVLCSharp/issues/261
+
+LibVLCSharp version 3.3.1
+=========================
+* Add support for the Uno Platform by @kakone https://github.com/videolan/libvlcsharp/pull/76 Fixes https://code.videolan.org/videolan/LibVLCSharp/issues/232
+
+LibVLCSharp version 3.3.0
+=========================
+* Docs: All public APIs are now documented and accessible through intellisense https://code.videolan.org/videolan/LibVLCSharp/issues/33
+* MediaElement: Fix bug on iOS showing renderer item duplicate because of mdns usage. https://code.videolan.org/videolan/LibVLCSharp/issues/237
+* RendererDiscoverer: Simplify API usage by inferring protocol depending on platform (not breaking public API).
+* UWP: Makes the UWP VideoView more MVVM friendly https://github.com/videolan/libvlcsharp/pull/73
+
+LibVLCSharp version 3.2.5
+=========================
+* MediaElement: Fix RendererDiscovery bug triggered when some controls are hidden. https://code.videolan.org/videolan/LibVLCSharp/issues/235
+* Core: Add more docs (on-going https://code.videolan.org/videolan/LibVLCSharp/issues/33)
+
+LibVLCSharp version 3.2.4
+=========================
+* Core: bit of documentation comments for public APIs, remove dead code
+* Media: Fix wrong event handler type
+* MediaConfiguration: Correctly handle FileCaching and NetworkCaching options in MediaConfiguration by contributor Andrei
+* Update MSBuild.Sdk.Extras
+* WPF/WinForms: Add .NET Core 3 support by contributor Ashkan Daie 
+
+LibVLCSharp version 3.2.3
+=========================
+* tvOS: Add missing AOT support for native events https://code.videolan.org/videolan/LibVLCSharp/issues/222
+
+LibVLCSharp version 3.2.2
+=========================
+* Core: Fix size_t C# interop https://code.videolan.org/videolan/LibVLCSharp/issues/217
+* Core: libvlc logging https://code.videolan.org/videolan/LibVLCSharp/issues/216:
+    - Allow dynamic buffer size allocation for logs
+    - Fix libvlc log interop on Linux 64 bits
+* WPF: Move the focus to the parent window when ALT+F4 is pressed.
+* tvOS: Fix device link error regression https://code.videolan.org/videolan/LibVLCSharp/issues/218
+
+LibVLCSharp version 3.2.1
+=========================
+* MediaPlayerElement minor fix: Some buttons from PlaybackControls would not hide https://code.videolan.org/videolan/LibVLCSharp/issues/206
+
+LibVLCSharp version 3.2.0
+=========================
+* MediaPlayerElement release https://code.videolan.org/videolan/LibVLCSharp/issues/45
+
+LibVLCSharp version 3.1.1
+=========================
+* Core: MediaPlayer: Allow to unset remote renderer https://code.videolan.org/videolan/LibVLCSharp/issues/198
+* UWP: Fix NullReferenceException when a disposed VideoView is added to the tree https://code.videolan.org/videolan/LibVLCSharp/issues/193
+
+LibVLCSharp version 3.1.0
+=========================
+* Fix Windows XP support by disabling message box for plugins that fail to load https://code.videolan.org/videolan/LibVLCSharp/issues/174
+* [BREAKING API] strong typing Audio Channel API https://code.videolan.org/videolan/LibVLCSharp/issues/169
+
+LibVLCSharp version 3.0.3
+=========================
+* Fix AOT for dialogs callbacks on iOS device https://code.videolan.org/videolan/LibVLCSharp/issues/166
+* WPF: Propagate DataContext to enable databinding for VideoView's child elements
+* MediaConfiguration: Add crossplatform configuration API to enable hardware decoding and a couple other settings https://code.videolan.org/videolan/LibVLCSharp/issues/132
+* Add back libvlc logging support, on all platforms and runtimes.
+
+LibVLCSharp version 3.0.2
+=========================
+* Improve nuget docs
+* Fix iOS linker issue https://code.videolan.org/videolan/LibVLCSharp/issues/163
+
+LibVLCSharp version 3.0.1
+=========================
+* Add libvlc/libvlcsharp version check
+* Add Xamarin.Forms 4.0 support for LibVLCSharp.Forms
+
+LibVLCSharp version 3.0.0
+=========================
+* First stable release: https://mfkl.github.io/libvlc/crossplatform/xamarin/forms/release/2019/05/13/LibVLCSharp-goes-stable.html
+* VS2019 support
+
+LibVLCSharp version 0.8.1
+=========================
+* Fix ARM debug support for UWP.
+* LibVLC: Remove Log API in preparation for 3.0 release
+* Android: Update AWindow aar autogen bindings.
+
+LibVLCSharp version 0.8.0
+=========================
+* Fix root namespace for GTK/WPF X.F backends.
+* Add UWP support for mobile, desktop and Xbox.
+
+LibVLCSharp version 0.7.0
+=========================
+* WPF: Fix HiDPi support in relation to airspace workaround. https://github.com/videolan/libvlcsharp/pull/42
+* Improve MVVM scenario and fix mediaplayer change event. [API CHANGE] https://github.com/videolan/libvlcsharp/pull/36
+
+LibVLCSharp version 0.6.0
+=========================
+* Fix UTF8 interop everywhere and free libvlc strings where needed.
+* Completed libvlc API coverage. [API CHANGE] https://code.videolan.org/videolan/LibVLCSharp/issues/104
+* Add native API coverage unit test
+* Add public API docs
+* Rework main README and add sub-READMEs per platform.
+* Update linux install steps.
+* Fixed native crash when disposing RendererDiscoverer https://code.videolan.org/videolan/LibVLCSharp/issues/124
+
+LibVLCSharp version 0.5.0
+=========================
+* Docs: Fix comments for LibVLC ctor
+* Improve test setup, mostly for CI: 
+- can be run from `dotnet run` 
+- targets netcoreapp now and uses NUnitLite
+- remove network calls
+* Fix libvlc loading from .NET Core on macOS
+* [API CHANGE] move Media enums outside the Media class
+* [API CHANGE] Media.Parse is now async only.
+* [API CHANGE] Refactor MediaList. Libvlc locking is now handled internally for easier use. LINQ ready.
+* net40 build of libvlcsharp has a new dependency to enable async/await support: Microsoft.Bcl.Async. This means you need binding redirects in your consuming projects.
+example of binding redirect file: https://code.videolan.org/videolan/LibVLCSharp/blob/master/Samples/LibVLCSharp.Windows.Net40.Sample/app.config
+* Fix network browsing. https://code.videolan.org/videolan/LibVLCSharp/issues/108
+
+LibVLCSharp version 0.4.2
+=========================
+* Android: remove unnecessary native call https://github.com/videolan/libvlcsharp/commit/338d11d1c3619efe7232a8526a12ba195006332b
+* tvOS: Fix device builds
+* Add new assets thanks to Jeremy
+* Core.Initialize refactoring https://code.videolan.org/videolan/LibVLCSharp/issues/98
+- fixes netcore support
+- add docs
+- allow loading libvlc from custom path
+- document Linux custom path loading process
+
+LibVLCSharp version 0.4.1
+=========================
+* Fix viewpoint interop for 360 videos https://code.videolan.org/videolan/LibVLCSharp/issues/101
+
+LibVLCSharp version 0.4.0
+=========================
+* Add tvOS support https://code.videolan.org/videolan/LibVLCSharp/commit/e17a2a3a3a824b3be8401905690b8d7b6aacc970
+* Fix wrong log file pointer return https://code.videolan.org/videolan/LibVLCSharp/commit/014d3802ae2ebc12ff865ccc59d1767442fdf697
+
+LibVLCSharp version 0.3.0
+=========================
+* Add GTK# support (with Xamarin.Forms support) on Linux and Windows. https://code.videolan.org/videolan/LibVLCSharp/commit/a927af513addeacb7c17541d06c6b7d16bfef9c0
+* Fix dialog reset interop bug https://code.videolan.org/videolan/LibVLCSharp/commit/c954cad1be8642bf96a74650e7ecd1c814b323ee
+
+LibVLCSharp version 0.2.0
+=========================
+* [Docs] Add public API comments
+* Use readonly structs https://github.com/videolan/libvlcsharp/pull/27
+* Refactor marshalling logic in generic code
+* Fix Unit tests
+* RendererDiscoverer: Remove service discovery name inference
+* Enable Xamarin Forms gestures on iOS (temporary workaround hopefully) https://github.com/videolan/libvlcsharp/commit/fa455586d1b93ee903fd1e34d49b59b323615754
+
+LibVLCSharp version 0.1.6
+=========================
+* Fix AWindow reference https://code.videolan.org/videolan/LibVLCSharp/issues/84
+
+LibVLCSharp version 0.1.5
+=========================
+* Handle null login/password dialog marshaling https://code.videolan.org/videolan/LibVLCSharp/issues/75
+* Build: Add a way to build all netstandard targets from CLI 
+* remove allow unsafe blocks https://code.videolan.org/videolan/LibVLCSharp/merge_requests/6
+* remove nuspec and update csproj https://code.videolan.org/videolan/LibVLCSharp/merge_requests/7:
+-> docs: fixes VS Intellisense
+-> add better description on nuget.org
+
+LibVLCSharp version 0.1.4
+=========================
+* Dialog.Dismiss should be able to be called safely multiple times https://code.videolan.org/videolan/LibVLCSharp/issues/65
+* Remove finalizers introduced in 0.1.3, they become a problem when the GC is under pressure https://code.videolan.org/videolan/LibVLCSharp/issues/73
+* Rework media callbacks, keep delegate ref and enable iOS support (amongst other things) https://code.videolan.org/videolan/LibVLCSharp/issues/72
+
+LibVLCSharp version 0.1.3
+=========================
+* Dialog: Replace cancellation token for existing dialog id https://code.videolan.org/videolan/LibVLCSharp/issues/64
+* Add proper IDisposable implementation for all API types https://code.videolan.org/videolan/LibVLCSharp/issues/36
+* Core.Initialize() is now safe to call on iOS (does nothing) https://code.videolan.org/videolan/LibVLCSharp/commit/733b5e60000966906abfd5992ed2d676b9bc8253
+
+LibVLCSharp version 0.1.2
+=========================
+* Fix SetVideoTrack wrong interop https://code.videolan.org/videolan/LibVLCSharp/issues/62
+* Fix event interop triggering multiple handlers https://code.videolan.org/videolan/LibVLCSharp/issues/44
+
+LibVLCSharp version 0.1.1
+=========================
+* Add .NET Core macOS and net40 macOS support
+
+LibVLCSharp version 0.1.0
+=========================
+Public API change: VideoView https://github.com/videolan/libvlcsharp/pull/18
+* VideoView supports crossplatform MediaPlayer databinding
+* Background playback support: VideoView can be disposed of and the music/video will keep playing.
+* Renderer API is simplified: The default service discovery protocol is now inferred https://github.com/videolan/libvlcsharp/commit/10d1c4160e3bda2b156d7385d2be42f410780a20
+
+LibVLCSharp version 0.0.4
+=========================
+* Remove API version checks https://github.com/videolan/libvlcsharp/commit/335866b0c2b355c0622e65fa690bad665c78c57e
+* Add versioning document https://github.com/videolan/libvlcsharp/commit/8566221ee0f0654b63b176c2892d98b455e32c20
+* Fix event interop struct layout https://github.com/videolan/libvlcsharp/commit/426bc0dcbe9d2bc7ae1a2a11833765093a8e20d1
+* Fix wrong event type https://github.com/videolan/libvlcsharp/commit/2e8b978cea02b83945de564332e81ca65ddf4c99
+
+LibVLCSharp version 0.0.3
+=========================
+* Support for net40 target
+* Support for netstandard1.1 target
+* Removed [SuppressUnmanagedCodeSecurity] which allowed to remove dependency on System.Runtime.InteropServices.RuntimeInformation
+* Custom libvlc library path support
+* Added build script folder with powershell script to build and package libvlcsharp
+
+LibVLCSharp version 0.0.2
+=========================
+
+* Fix media mrl UTF-8 marshaling #30
+
+LibVLCSharp version 0.0.1
+=========================
+
+* API changes: EventManagers are now encapsulated. Subscribe directly on the objects (Media, MediaPlayer, etc.)
+* Clarify error message when libvlc.dll is not found or cannot be loaded.
+* Fix iOS native reverse callbacks #15

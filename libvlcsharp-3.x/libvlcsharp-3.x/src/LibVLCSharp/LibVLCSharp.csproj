@@ -1,0 +1,89 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+  <PropertyGroup>
+    <Title>LibVLCSharp</Title>
+    <Summary>The official .NET wrapper around LibVLC.</Summary>
+    <Description>LibVLCSharp is a cross-platform audio and video API for .NET platforms based on VideoLAN's LibVLC Library. It provides a comprehensive multimedia API that can be used across mobile, server and desktop to render video and output audio. Mono, .NET Framework and .NET Core runtimes are supported.
+
+This package contains the core features of LibVLCSharp (libvlc loading and initialization, .NET-friendly classes to ease the use of libvlc...). All other `LibVLCSharp.*` packages depend on this one.
+Features:
+- Play every media file formats, every codec and every streaming protocols
+- Run on every platform, from desktop (Windows, Linux, Mac) to mobile (Android, iOS) and TVs
+- Hardware and efficient decoding on every platform, up to 8K
+- Network browsing for distant filesystems (SMB, FTP, SFTP, NFS...) and servers (UPnP, DLNA)
+- Playback of Audio CD, DVD and Bluray with menu navigation
+- Support for HDR, including tonemapping for SDR streams
+- Audio passthrough with SPDIF and HDMI, including for Audio HD codecs, like DD+, TrueHD or DTS-HD
+- Support for video and audio filters
+- Support for 360 video and 3D audio playback, including Ambisonics
+- Able to cast and stream to distant renderers, like Chromecast and UPnP renderers.
+
+This package also contains the views for the following platforms:
+
+- Android
+- iOS
+- Mac
+- tvOS
+- UWP
+
+If you need Xamarin.Forms support, see LibVLCSharp.Forms. 
+
+LibVLC needs to be installed separately, see VideoLAN.LibVLC.* packages.</Description>
+    <TargetFrameworks>netstandard2.1;netstandard2.0;netstandard1.1;net40;net471</TargetFrameworks>
+    <TargetFrameworks Condition="!$([MSBuild]::IsOsPlatform('Linux'))">$(TargetFrameworks);monoandroid81;xamarin.ios10;xamarin.mac20</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOsPlatform('Windows'))">$(TargetFrameworks);uap10.0.18362;net6.0;net6.0-windows;net6.0-ios;net6.0-android;net6.0-tvos;net6.0-macos</TargetFrameworks>
+    <Configurations>Debug;Release;Win32Debug;Win32Release</Configurations>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeAWindow</TargetsForTfmSpecificBuildOutput>
+    <RootNamespace>LibVLCSharp</RootNamespace>
+    <PackageId>LibVLCSharp</PackageId>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoNFloatUsing Condition="$(DefineConstants.Contains('APPLE'))">true</NoNFloatUsing>
+  </PropertyGroup>
+  <!--Override TFMs when building from the LVS.Win32 solution-->
+  <PropertyGroup Condition="$(Configuration.StartsWith('Win32'))">
+    <TargetFrameworks>netstandard2.1;netstandard2.0;net6.0;net6.0-windows</TargetFrameworks>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework.StartsWith('uap'))">
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Platforms\**\*.cs" />
+    <None Include="Platforms\**\*.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.Contains('android'))">
+    <Compile Include="Platforms\Android\**\*.cs" />
+    <ProjectReference Include="..\LibVLCSharp.Android.AWindow\LibVLCSharp.Android.AWindow.csproj" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup Condition="$(DefineConstants.Contains('APPLE'))">
+    <Compile Include="Platforms\Apple\**\*.cs" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.1' ">
+    <Compile Remove="Shared\MediaPlayerElement\*.*" />
+    <None Include="Shared\MediaPlayerElement\*.*" />
+    <PackageReference Include="System.Memory" Version="4.5.4" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
+    <Compile Remove="Shared\MediaPlayerElement\*.*" />
+    <None Include="Shared\MediaPlayerElement\*.*" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Bcl.Async" Version="1.0.168" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('uap'))">
+    <Compile Include="Platforms\UWP\**\*.cs" />
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <PackageReference Include="SharpDX.Direct3D11" Version="4.2.0" />
+    <PackageReference Include="System.Memory" Version="4.5.4" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net471' Or '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="System.Memory" Version="4.5.4" />
+  </ItemGroup>
+  <Target Name="IncludeAWindow" Condition="$(TargetFramework.Contains('android'))">
+    <ItemGroup>
+      <BuildOutputInPackage Include="$(OutputPath)LibVLCSharp.Android.AWindow.dll" />
+    </ItemGroup>
+  </Target>
+</Project>

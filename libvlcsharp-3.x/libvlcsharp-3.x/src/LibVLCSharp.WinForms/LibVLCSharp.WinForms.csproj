@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Title>LibVLCSharp.WinForms</Title>
+    <Summary>WinForms integration for LibVLCSharp</Summary>
+    <Description>LibVLCSharp is a cross-platform audio and video API for .NET platforms based on VideoLAN's LibVLC Library. It provides a comprehensive multimedia API that can be used across mobile, server and desktop to render video and output audio. Mono, .NET Framework and .NET Core runtimes are supported.
+  
+LibVLCSharp.WinForms contains the integration with Windows Forms.
+
+This package contains the views that allows to display a video played with LibVLCSharp
+in a Windows Forms app. It depends on LibVLCSharp.
+
+LibVLC needs to be installed separately, see VideoLAN.LibVLC.* packages.
+    </Description>
+    <TargetFrameworks>net40;netcoreapp3.1;net6.0-windows</TargetFrameworks>
+    <Configurations>Debug;Release;Win32Debug;Win32Release</Configurations>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>LibVLCSharp.WinForms</RootNamespace>
+    <PackageId>LibVLCSharp.WinForms</PackageId>
+    <PackageTags>$(PackageTags);winforms</PackageTags>
+  </PropertyGroup>
+  <!--Override TFMs when building from the LVS.Win32 solution-->
+  <PropertyGroup Condition="$(Configuration.StartsWith('Win32'))">
+    <TargetFrameworks>netcoreapp3.1;net6.0-windows</TargetFrameworks>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibVLCSharp\LibVLCSharp.csproj" />
+  </ItemGroup>
+</Project>

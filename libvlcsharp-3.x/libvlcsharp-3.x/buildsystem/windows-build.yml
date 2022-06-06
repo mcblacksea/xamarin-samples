@@ -1,0 +1,30 @@
+steps:
+- template: base-template.yml
+- task: PowerShell@2
+  displayName: 'Install gtksharp'
+  inputs:
+    targetType: 'inline'
+    script: |
+      $msiFile = "gtk-sharp-2.12.45.msi"
+      Invoke-WebRequest "https://xamarin.azureedge.net/GTKforWindows/Windows/$msiFile" -OutFile $msiFile
+      $arguments = "/i `"$msiFile`" /quiet"
+      Start-Process msiexec.exe -ArgumentList $arguments -Wait
+
+- task: JavaToolInstaller@0
+  displayName: install JDK 11
+  inputs:
+    versionSpec: '11'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: custom
+    custom: 'cake'
+    workingDirectory: buildsystem
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: 'nugets'
+    artifactName: 'nugets'

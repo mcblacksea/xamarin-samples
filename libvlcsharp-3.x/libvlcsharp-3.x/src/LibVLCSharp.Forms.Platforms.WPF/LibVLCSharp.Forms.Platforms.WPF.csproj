@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Title>LibVLCSharp.Forms.WPF</Title>
+    <Summary>WPF integration for LibVLCSharp.Forms</Summary>
+    <Description>LibVLCSharp is a cross-platform audio and video API for .NET platforms based on VideoLAN's LibVLC Library. It provides a comprehensive multimedia API that can be used across mobile, server and desktop to render video and output audio. Mono, .NET Framework and .NET Core runtimes are supported.
+
+LibVLCSharp.Forms.WPF contains the Xamarin.Forms support for LibVLCSharp through custom renderers on the WPF platform. It depends on LibVLCSharp.Forms and LibVLCSharp.WPF.
+
+Xamarin.Forms support for other platforms are in different packages (namely LibVLCSharp.Forms and LibVLCSharp.Forms.GTK). LibVLC needs to be installed separately, see VideoLAN.LibVLC.* packages.
+    </Description>   
+    <TargetFramework>net47</TargetFramework>
+    <RootNamespace>LibVLCSharp.Forms.Platforms.WPF</RootNamespace>
+    <PackageId>LibVLCSharp.Forms.WPF</PackageId>
+    <UseWPF>true</UseWPF>
+    <PackageTags>$(PackageTags);wpf</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\LibVLCSharp.Forms\LibVLCSharp.Forms.csproj" />
+    <ProjectReference Include="..\LibVLCSharp.WPF\LibVLCSharp.WPF.csproj" />
+    <ProjectReference Include="..\LibVLCSharp\LibVLCSharp.csproj" />
+    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />
+    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="3.2.0.871581" />
+  </ItemGroup>
+</Project>

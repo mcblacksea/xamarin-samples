@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <Title>LibVLCSharp.Forms.Sample.WPF</Title>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>net47</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>LibVLCSharp.Forms.Sample.WPF</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.16" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibVLCSharp.Forms.Sample\LibVLCSharp.Forms.Sample.csproj" />
+    <ProjectReference Include="..\..\..\src\LibVLCSharp.Forms.Platforms.WPF\LibVLCSharp.Forms.Platforms.WPF.csproj" />
+  </ItemGroup>
+</Project>

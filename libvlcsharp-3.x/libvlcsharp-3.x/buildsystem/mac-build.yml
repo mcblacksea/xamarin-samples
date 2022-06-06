@@ -1,0 +1,8 @@
+steps:
+- template: base-template.yml
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: custom
+    custom: 'cake'
+    workingDirectory: buildsystem
