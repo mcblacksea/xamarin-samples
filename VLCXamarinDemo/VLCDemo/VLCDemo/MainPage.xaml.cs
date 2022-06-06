@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibVLCSharp.Shared;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace VLCDemo
@@ -45,7 +47,7 @@ namespace VLCDemo
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
@@ -53,9 +55,13 @@ namespace VLCDemo
             Core.Initialize();
 
             _libVLC = new LibVLC();
+
+
+            var video = await GetVideoAsFileResultAsync();
+
             _mediaPlayer = new MediaPlayer(_libVLC)
             {
-                Media = new Media(_libVLC, new Uri("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"))
+                Media = new Media(_libVLC, new Uri(video.FullPath /*"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"*/))
             };
             
             VideoView.MediaPlayer = _mediaPlayer;
@@ -66,6 +72,29 @@ namespace VLCDemo
             _mediaPlayer.Playing += MediaPlayer_Playing;
             _mediaPlayer.Play();
         }
+
+        public async Task<FileResult> GetVideoAsFileResultAsync()
+        {
+            try
+            {
+                return await this.GetVideoFromGalleryAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Debug:{ex.Message}");
+            }
+            return null;
+        }
+
+        public async Task<FileResult> GetVideoFromGalleryAsync()
+        {
+            var result = await MediaPicker.PickVideoAsync(new MediaPickerOptions
+            {
+                Title = "Please pick a video"
+            });
+            return result;
+        }
+
 
         public async Task PlayStreamWithHeaders()
         {
