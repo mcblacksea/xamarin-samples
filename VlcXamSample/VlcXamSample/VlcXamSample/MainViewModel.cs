@@ -1,6 +1,9 @@
 ﻿using LibVLCSharp.Shared;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace VlcXamSample
 {
@@ -45,17 +48,41 @@ namespace VlcXamSample
         /// <summary>
         /// Initialize LibVLC and playback when page appears
         /// </summary>
-        public void OnAppearing()
+        public async void OnAppearing()
         {
             Core.Initialize();
 
             LibVLC = new LibVLC(enableDebugLogs: true);
 
-            var media = new Media(LibVLC, new Uri("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"));
+            var video = await GetVideoAsFileResultAsync();
+
+            var media = new Media(LibVLC, new Uri(video.FullPath/*"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"*/));
 
             MediaPlayer = new MediaPlayer(media) { EnableHardwareDecoding = true };
             media.Dispose();
             MediaPlayer.Play();
+        }
+
+        public async Task<FileResult> GetVideoAsFileResultAsync()
+        {
+            try
+            {
+                return await this.GetVideoFromGalleryAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Debug:{ex.Message}");
+            }
+            return null;
+        }
+
+        public async Task<FileResult> GetVideoFromGalleryAsync()
+        {
+            var result = await MediaPicker.PickVideoAsync(new MediaPickerOptions
+            {
+                Title = "Please pick a video"
+            });
+            return result;
         }
 
 
