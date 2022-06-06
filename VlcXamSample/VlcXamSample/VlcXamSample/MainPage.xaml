@@ -13,20 +13,20 @@
     </ContentPage.BindingContext>
 
     <!--  Default  -->
-    <vlc:MediaPlayerElement
+    <!--<vlc:MediaPlayerElement
         EnableRendererDiscovery="True"
         LibVLC="{Binding LibVLC}"
-        MediaPlayer="{Binding MediaPlayer}" />
+        MediaPlayer="{Binding MediaPlayer}" />-->
 
     <!--  Hide the PlayBack Controls  -->
-    <!--<vlc:MediaPlayerElement
+    <vlc:MediaPlayerElement
         EnableRendererDiscovery="True"
         LibVLC="{Binding LibVLC}"
         MediaPlayer="{Binding MediaPlayer}">
         <vlc:MediaPlayerElement.PlaybackControls>
-            <vlc:PlaybackControls IsVisible="False" />
+            <vlc:PlaybackControls IsTracksButtonVisible="False" IsLockButtonVisible="False"/>
         </vlc:MediaPlayerElement.PlaybackControls>
-    </vlc:MediaPlayerElement>-->
+    </vlc:MediaPlayerElement>
 
 
     <!--  Change the main color  -->
