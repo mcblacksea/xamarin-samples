@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
@@ -53,6 +54,31 @@ namespace VlcXamSample
             Core.Initialize();
 
             LibVLC = new LibVLC(enableDebugLogs: true);
+
+
+            //using (var libVLC = new LibVLC())
+            //{
+            //    var media = new Media(libVLC, "https://www.youtube.com/watch?v=dQw4w9WgXcQ", FromType.FromLocation);
+            //    await media.Parse(MediaParseOptions.ParseNetwork);
+            //    using (var mp = new MediaPlayer(media.SubItems.First()))
+            //    {
+            //        var r = mp.Play();
+            //        Console.ReadKey();
+            //    }
+            //}
+
+
+            //using (var libVLC = new LibVLC())
+            //{
+            //var media = new Media(LibVLC, "https://www.youtube.com/watch?v=dQw4w9WgXcQ", FromType.FromLocation);
+            //    await media.Parse(MediaParseOptions.ParseNetwork);
+            //     MediaPlayer = new MediaPlayer(media.SubItems.First());
+            //    {
+            //        var r = MediaPlayer.Play();
+            //        Console.ReadKey();
+            //    }
+            //}
+
 
             var video = await GetVideoAsFileResultAsync();
 
