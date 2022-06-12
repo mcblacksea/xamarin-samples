@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+             x:Class="TestMediaManager.MainPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <mm:VideoView VerticalOptions="FillAndExpand" 
+                          HorizontalOptions="FillAndExpand"
+                          Source="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" ShowControls="True" />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

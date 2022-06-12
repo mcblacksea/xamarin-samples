@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="TestMediaManager.UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TestMediaManager.UWP"
+    RequestedTheme="Light">
+
+</Application>
