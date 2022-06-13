@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.Views.DisplayPatientDetails">
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="AliceBlue">
+            <StackLayout>
+                <Label
+                    Text="Patient Register"
+                    HorizontalOptions="Center"
+                    TextColor="SteelBlue"
+                    FontSize="35"
+                    Margin="0, 10"
+                />
+
+                <Label Text="Patient Name" FontSize="Large"/>
+                <Entry
+                    Placeholder="Patient Name"
+                    Keyboard="Text"
+                    MaxLength="15"
+                    x:Name="name"
+                />
+
+                <Label Text="Patient Age" FontSize="Large"/>
+                <Entry
+                    Placeholder="Patient Age"
+                    Keyboard="Numeric"
+                    MaxLength="2"
+                    x:Name="age"
+                />
+
+                <Label Text="Select Gender" FontSize="Large"/>
+                <Picker x:Name="genderPicker" Title="Select">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Male</x:String>
+                            <x:String>Female</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Grid Margin="5,0,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.40*" />
+                        <ColumnDefinition Width="0.50*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Injury Severity" FontSize="Large"/>
+                    <Picker Grid.Row="0" Grid.Column="1" x:Name="SeverityPicker" Title="Select">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>1</x:String>
+                                <x:String>2</x:String>
+                                <x:String>3</x:String>
+                                <x:String>4</x:String>
+                                <x:String>5</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+                <Grid Margin="5,0,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.40*" />
+                        <ColumnDefinition Width="0.50*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Injury Type" FontSize="Large"/>
+                    <Picker Grid.Row="0" Grid.Column="1" x:Name="Injurypicker" Title="Select"  SelectedIndexChanged="InjuryPicked">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Sprains</x:String>
+                                <x:String>Strains</x:String>
+                                <x:String>Lower Back Pain</x:String>
+                                <x:String>Plantar Fasciitis</x:String>
+                                <x:String>Shin Splints</x:String>
+                                <x:String>Enter Your Own</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+                <Label x:Name="InjuryLabel" Text="Enter your own injury type" FontSize="Large"/>
+                <Entry
+                    Placeholder="Other Injury"
+                    Keyboard="Text"
+                    MaxLength="50"
+                    x:Name="injury"
+                />
+                <Grid Margin="5,0,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.80*" />
+                        <ColumnDefinition Width="0.50*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="How Injury Occurred" FontSize="Large"/>
+                    <Picker Grid.Row="0" Grid.Column="1" x:Name="Occurredpicker" Title="Select" SelectedIndexChanged="InjuryOccurred">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Rugby</x:String>
+                                <x:String>Soccer</x:String>
+                                <x:String>Gym</x:String>
+                                <x:String>Jogging</x:String>
+                                <x:String>Hockey</x:String>
+                                <x:String>Weightlifting</x:String>
+                                <x:String>Dancing</x:String>
+                                <x:String>Tennis</x:String>
+                                <x:String>Golf</x:String>
+                                <x:String>Horse Riding</x:String>
+                                <x:String>Skateboarding</x:String>
+                                <x:String>Cycling</x:String>
+                                <x:String>Enter Your Own</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+
+                <Label x:Name="OccuredLabel" Text="Enter your own how injury occurred" FontSize="Large"/>
+                <Entry
+                    Placeholder="Injury Occured"
+                    Keyboard="Text"
+                     MaxLength="20"
+                    x:Name="occured"
+                />
+
+                <Label FontSize="Large" Text="Start Date of Exercise Plan" />
+                <DatePicker x:Name="startDatePicker"
+                    Format="D"
+                    />
+
+                <Label FontSize="Large" Text="End Date of Exercise Plan" />
+                <DatePicker x:Name="endDatePicker"
+                    Format="D"
+                    />
+
+                <Label FontSize="Large" Text="Enter patient email" />
+                <Entry
+                    Placeholder="Patient Email"
+                    Keyboard="Email"
+                    x:Name="email"/>
+
+                <Button
+                    Text="Confirm"
+                    Margin="50,30,50,45"
+                    BackgroundColor="SteelBlue"
+                    TextColor="White"
+                    Clicked="startNewPlan"
+                    CornerRadius="10"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

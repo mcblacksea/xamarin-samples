@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.Views.ShowPatientExercisePlan">
+    <ScrollView>
+        <StackLayout >
+            <Frame BorderColor="SteelBlue" CornerRadius="20" Grid.Row="0" Grid.Column="1"  Margin="40,10,40,10">
+                <Image x:Name="imgageDisplay" Source=""  
+                MinimumHeightRequest = "20"
+                MinimumWidthRequest = "0"  
+                VerticalOptions = "Start"
+                HorizontalOptions = "End"
+                />
+            </Frame>
+            <Label TextColor="Black" 
+                   FontSize="Medium" FontFamily="Arial"  
+                   HorizontalTextAlignment="Center" 
+                   Text="Daily Progress"/>
+            <ProgressBar  Margin="10,0,10,0" x:Name="progress" Progress="0.00" ProgressColor="SteelBlue" ScaleY="4" />
+
+            <Label x:Name="currentDate" TextColor="Black" 
+                   FontSize="Medium" FontFamily="Arial"  
+                   HorizontalTextAlignment="Center"
+                   Text=""/>
+
+            
+            <Grid Margin="5,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Grid.Column="0"
+                        x:Name="exer1"
+                        Text="Select" 
+                        Clicked="exercise1"  
+                        TextColor="White"  
+                        BackgroundColor="SteelBlue"
+                        CornerRadius="10"
+                        Margin="0,0,10,0"/>
+                <Button Grid.Row="1" Grid.Column="0" 
+                        x:Name="exer2" 
+                        Text="Select"   
+                        Clicked="exercise2"  
+                        TextColor="White"  
+                        BackgroundColor="SteelBlue"
+                        CornerRadius="10"
+                        Margin="0,0,10,0"/>
+                    <Button Grid.Row="2" Grid.Column="0" 
+                        x:Name="exer3"
+                        Text="Select"   
+                        Clicked="exercise3"  
+                        TextColor="White"  
+                        BackgroundColor="SteelBlue"
+                        CornerRadius="10"
+                        Margin="0,0,10,0"/>
+            </Grid>
+            
+            <Button x:Name="saveState"  
+                    Text="Finish"   
+                    Clicked="saveResult"  
+                    TextColor="White"  
+                    BackgroundColor="SteelBlue"
+                    Margin="50,10,50,0"
+                    CornerRadius="10"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

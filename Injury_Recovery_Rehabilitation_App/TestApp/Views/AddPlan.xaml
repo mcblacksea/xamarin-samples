@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.Views.AddPlan">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+            x:Name="title"
+            Text=""
+            HorizontalOptions="Center"
+            TextColor="SteelBlue"
+            FontAttributes="Bold"
+            FontSize="35"
+            Margin="5,5,0,0"/>
+            <Entry
+                    Placeholder="Enter Plan Name"
+                    Keyboard="Text"
+                    TextColor="Black"
+                    MaxLength="15"
+                    x:Name="planName"
+                    Margin="5,5,0,0"
+                />
+            <Grid Margin="5,20,5,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.40*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Exercise 1" FontSize="Large" TextColor="Black"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="exercise1" Title="Select"  ItemsSource="{Binding name}">
+                </Picker>
+            </Grid>
+            <Grid Margin="5,20,5,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.40*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Exercise 2" FontSize="Large" TextColor="Black"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="exercise2" Title="Select"  ItemsSource="{Binding name}">
+                </Picker>
+            </Grid>
+            <Grid Margin="5,20,5,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.40*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Exercise 3" FontSize="Large" TextColor="Black"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="exercise3" Title="Select"  ItemsSource="{Binding name}">
+                </Picker>
+            </Grid>
+            <Grid Margin="5,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.40*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Category" TextColor="Black" FontSize="Large"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="category" Title="Select">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Lower Extremity</x:String>
+                            <x:String>Face</x:String>
+                            <x:String>Head</x:String>
+                            <x:String>Upper Extremity</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+            <Button
+                    x:Name="buttonName"
+                    Text=""
+                    Margin="50,30,50,45"
+                    BackgroundColor="SteelBlue"
+                    TextColor="White"
+                    Clicked="addPlan"
+                    CornerRadius="10"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

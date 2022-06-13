@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.MainPage">
+
+    <StackLayout
+        VerticalOptions="Center"
+        Margin="20">
+
+        <Label
+            Text="Injury Recovery Login"
+            HorizontalOptions="Center"
+            TextColor="SteelBlue"
+            FontAttributes="Bold"
+            FontSize="35"
+            Margin="0, 40"
+            />
+        <Entry
+            Placeholder="E-mail"
+            Keyboard="Email"
+            x:Name="email"
+            />
+        <Grid Margin="5,0,5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.50*" />
+                <ColumnDefinition Width="0.10*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <Entry
+            Grid.Row="0" Grid.Column="0"
+            Placeholder="Password"
+            IsPassword="true"
+            x:Name="pass"
+            />
+        <ImageButton 
+                    Grid.Row="0" Grid.Column="1"
+                    Source="showPass.png"
+                    HorizontalOptions="Center"
+                    WidthRequest="30"
+                    HeightRequest="30"  
+                    Clicked ="showPass" />
+        </Grid>
+        <Button
+            Text="Login"
+            Clicked="LoginClicked"
+            Margin="60, 10"
+            BackgroundColor="SteelBlue"
+            TextColor="White"
+            CornerRadius="10"
+            FontAttributes="Bold"
+            />
+        <Button
+            Text="Register"
+            Clicked="RegisterClicked"
+            Margin="60, 0"
+            BackgroundColor="SteelBlue"
+            TextColor="White"
+            CornerRadius="10"
+            FontAttributes="Bold"
+            />
+    </StackLayout>
+
+</ContentPage>

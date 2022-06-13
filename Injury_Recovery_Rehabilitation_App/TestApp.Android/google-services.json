@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "258158504282",
+    "firebase_url": "https://injuryrecovery-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "injuryrecovery",
+    "storage_bucket": "injuryrecovery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258158504282:android:8e92f58c73a0c5b8ff6b63",
+        "android_client_info": {
+          "package_name": "com.companyname.testapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "258158504282-hltmqdphmcsouaudo0p929dn06e04gjh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoN2JDo0vLlG8chDbvRVgnDwTk06Q4nTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "258158504282-hltmqdphmcsouaudo0p929dn06e04gjh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "258158504282-jt3770q431008qdpgis6a23gpv6e8c91.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.companyname.TestApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

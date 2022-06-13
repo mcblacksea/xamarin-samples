@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.Views.YourPlans">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label TextColor="SteelBlue" Text="Your Plans" HorizontalOptions="Center" FontSize="24"/>
+            <Button 
+                    Text="Create Exercise Plan" 
+                    Clicked="createPlan"  
+                    TextColor="White"  
+                    BackgroundColor="SteelBlue"
+                    CornerRadius="10"
+                    Margin="0,10,0,0"/>
+            <Button 
+                    Text="Edit/Delete Exercise Plan" 
+                    Clicked="editDeletePlan"  
+                    TextColor="White"  
+                    BackgroundColor="SteelBlue"
+                    CornerRadius="10"
+                    Margin="0,10,0,0"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

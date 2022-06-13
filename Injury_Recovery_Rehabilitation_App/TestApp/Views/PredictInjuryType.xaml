@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.Views.PredictInjuryType">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+            Text="Predict Injury"
+            HorizontalOptions="Center"
+            TextColor="SteelBlue"
+            FontAttributes="Bold"
+            FontSize="35"
+            Margin="0, 40"
+            />
+            <Grid Margin="5,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.40*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Skill Level" TextColor="Black" FontSize="Large"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="skill" Title="Select" SelectedIndexChanged="skillLevel">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>amatur</x:String>
+                            <x:String>Casual</x:String>
+                            <x:String>professional</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+            <Label Text="Select Gender" TextColor="Black" FontSize="Large"/>
+            <RadioButton Content="Male" 
+                    Value="Male" 
+                    TextColor="Black"
+                    GroupName="gen"
+                    CheckedChanged="getGender"/>
+            <RadioButton Content="Female"
+                    Value="Female"
+                    TextColor="Black"
+                    GroupName="gen"
+                    CheckedChanged="getGender"/>
+            <Grid Margin="5,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.40*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Age" TextColor="Black" FontSize="Large"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="age" Title="Select" SelectedIndexChanged="selectAge">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>0-18</x:String>
+                            <x:String>18-36</x:String>
+                            <x:String>36-50</x:String>
+                            <x:String>50-65</x:String>
+                            <x:String>65-80</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+            <Label Text="Injured Before" TextColor="Black" FontSize="Large"/>
+            <RadioButton Content="Yes" 
+                    Value="Yes" 
+                    TextColor="Black"
+                    GroupName="before"
+                    CheckedChanged="getInjuryBefore"/>
+            <RadioButton Content="No"
+                    Value="No"
+                    TextColor="Black"
+                    GroupName="before"
+                    CheckedChanged="getInjuryBefore"/>
+            <Grid Margin="5,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.40*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Activity" TextColor="Black" FontSize="Large"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="activity" Title="Select" SelectedIndexChanged="selectActivity">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Rugby</x:String>
+                            <x:String>Soccer</x:String>
+                            <x:String>Gym</x:String>
+                            <x:String>Jogging</x:String>
+                            <x:String>Hockey</x:String>
+                            <x:String>Weightlifting</x:String>
+                            <x:String>Dancing</x:String>
+                            <x:String>Tennis</x:String>
+                            <x:String>Golf</x:String>
+                            <x:String>Horse Riding</x:String>
+                            <x:String>Skateboarding</x:String>
+                            <x:String>Cycling</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+            <Button
+                    Text="Confirm"
+                    Margin="50,30,50,45"
+                    BackgroundColor="SteelBlue"
+                    TextColor="White"
+                    Clicked="sendValues"
+                    CornerRadius="10"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

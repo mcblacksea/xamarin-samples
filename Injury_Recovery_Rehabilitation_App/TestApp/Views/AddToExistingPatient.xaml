@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.Views.AddToExistingPatient">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Select Patient" HorizontalOptions="Center" FontSize="Large"/>
+            <Grid Margin="5,20,5,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.40*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Select Patient" FontSize="Large"/>
+                <Picker Grid.Row="0" Grid.Column="1" x:Name="namesPicker" Title="Select"  ItemsSource="{Binding patientNames}">
+                </Picker>
+            </Grid>
+            <Button
+            Text="Add Plan"
+            Clicked="sendExercisePlan"
+            Margin="60, 0"
+            BackgroundColor="SteelBlue"
+            TextColor="White"
+            CornerRadius="10"
+            FontAttributes="Bold"
+            />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

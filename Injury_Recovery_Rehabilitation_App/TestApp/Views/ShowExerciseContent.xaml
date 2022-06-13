@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.Views.ShowExerciseContent"
+             xmlns:forms="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="White">
+
+                <forms:VideoView x:Name="video" Margin="0,20,0,0" HeightRequest="202"  
+                                 WidthRequest="202"/>
+
+                <Label Grid.Row="0" Grid.Column="0"
+                   x:Name="exerciseLabel" 
+                   TextColor="Black" 
+                   FontSize="Medium" 
+                   FontFamily="Arial" 
+                   HorizontalOptions="Center"
+                   Text=""/>
+                <Grid Margin="5,0,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.50*" />
+                        <ColumnDefinition Width="0.50*" />
+                        <ColumnDefinition Width="0.50*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    
+                    <ImageButton Grid.Row="0" Grid.Column="0" Source="playButton.jpg"
+                    HorizontalOptions="Center"
+                     Aspect="AspectFit"    
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="showVideo" />
+                    
+                    <ImageButton  Grid.Row="0" Grid.Column="1" Source="pauseButton.jpg"
+                    HorizontalOptions="Center"
+                     Aspect="AspectFit"         
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="pauseVideo" />
+
+                    <ImageButton  Grid.Row="0" Grid.Column="2" Source="stopButton.jpg"
+                    HorizontalOptions="Center"
+                     Aspect="AspectFit"        
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="endVideo" />
+                    
+                </Grid>
+                <Label x:Name="copyRightLabel" TextColor="Black" 
+                   FontSize="Small" FontFamily="Arial"  
+                   HorizontalTextAlignment="Center" 
+                   Text=""
+                   Margin="5,20,5,10"/>
+
+                <Grid Margin="5,15,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.50*" />
+                        <ColumnDefinition Width="0.50*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Label x:Name="exer" Grid.Row="0" Grid.Column="0" TextColor="Black" 
+                   FontSize="Medium" FontFamily="Arial"  
+                   HorizontalTextAlignment="Center" 
+                   Text="Reps to complete"/>
+                    <Entry
+                    Grid.Row="0" Grid.Column="1"
+                    Placeholder="Enter Amount done"
+                    Keyboard="Numeric"
+                    x:Name="numExercises"
+                    TextColor="Black"
+                    TextChanged="exerciseValue"
+                     />
+                </Grid>
+
+                <Button x:Name="return"  
+                    Text="Return"  
+                    CornerRadius="10"
+                    Clicked="returned"  
+                    TextColor="White"  
+                    BackgroundColor="SteelBlue"
+                    Margin="50,30,50,0"/>
+                <Button x:Name="complete"  
+                    Text="Complete"   
+                    CornerRadius="10"
+                    Clicked="completed"  
+                    TextColor="White"  
+                    BackgroundColor="SteelBlue"
+                    Margin="50,15,50,0"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

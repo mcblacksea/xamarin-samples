@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.Views.UpdatePatientExerciseAmount">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+            Text="Update Exercises"
+            HorizontalOptions="Center"
+            TextColor="SteelBlue"
+            FontAttributes="Bold"
+            FontSize="35"
+            Margin="0, 40"
+            />
+            <Grid Margin="10,15,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.20*" />
+                    <ColumnDefinition Width="0.10*" />
+                    <ColumnDefinition Width="0.10*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" 
+                       Grid.Column="0" 
+                       x:Name="exercise1" 
+                       TextColor="Black" 
+                       FontSize="Medium" 
+                       FontFamily="Arial"  
+                       Text="{Binding Exercise1}"/>
+                <Entry
+                    Grid.Row="0" Grid.Column="1"
+                    TextColor="Black"
+                    PlaceholderColor="Black"
+                    Placeholder="Min Amount"
+                    Keyboard="Numeric"
+                    MaxLength="2"
+                    HorizontalOptions="CenterAndExpand"
+                    x:Name="min1"
+                />
+                <Entry
+                    Grid.Row="0" Grid.Column="2"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    Placeholder="Max Amount"
+                    Keyboard="Numeric"
+                    MaxLength="2"
+                    HorizontalOptions="Center"
+                    x:Name="max1"
+                />
+            </Grid>
+            <Grid Margin="10,10,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.20*" />
+                    <ColumnDefinition Width="0.10*" />
+                    <ColumnDefinition Width="0.10*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" 
+                       Grid.Column="0" 
+                       x:Name="exercise2" 
+                       TextColor="Black"  
+                       FontSize="Medium" 
+                       FontFamily="Arial"  
+                       Text="{Binding Exercise2}"/>
+                <Entry
+                    Grid.Row="0" Grid.Column="1"
+                    TextColor="Black"
+                    PlaceholderColor="Black"
+                    Placeholder="Min Amount"
+                    Keyboard="Numeric"
+                    MaxLength="2"
+                    HorizontalOptions="Center"
+                    x:Name="min2"
+                />
+                <Entry
+                    Grid.Row="0" Grid.Column="2"
+                    TextColor="Black"
+                    PlaceholderColor="Black"
+                    Placeholder="Max Amount"
+                    Keyboard="Numeric"
+                    MaxLength="2"
+                    HorizontalOptions="Center"
+                    x:Name="max2"
+                />
+            </Grid>
+            <Grid Margin="10,10,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.20*" />
+                    <ColumnDefinition Width="0.10*" />
+                    <ColumnDefinition Width="0.10*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" 
+                       Grid.Column="0" 
+                       x:Name="exercise3" 
+                       TextColor="Black"  
+                       FontSize="Medium" 
+                       FontFamily="Arial"  
+                       Text="{Binding Exercise3}"/>
+                <Entry
+                    Grid.Row="0" Grid.Column="1"
+                    TextColor="Black"
+                    PlaceholderColor="Black"
+                    Placeholder="Min Amount"
+                    Keyboard="Numeric"
+                    MaxLength="2"
+                    HorizontalOptions="Center"
+                    x:Name="min3"
+                />
+                <Entry
+                    Grid.Row="0" Grid.Column="2"
+                    TextColor="Black"
+                    PlaceholderColor="Black"
+                    Placeholder="Max Amount"
+                    Keyboard="Numeric"
+                    MaxLength="2"
+                    HorizontalOptions="Center"
+                    x:Name="max3"
+                />
+            </Grid>
+            <Button 
+                    Margin="40,10,40,0"
+                    Text="Update Plan" TextColor="White"  
+                    BackgroundColor="SteelBlue" 
+                    CornerRadius="10" 
+                    Clicked="updateExercisePlan" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

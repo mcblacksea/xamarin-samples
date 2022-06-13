@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.Views.RegisterPhsysio">
+    
+     <StackLayout
+        VerticalOptions="Center"
+        Margin="20">
+
+            <Label
+                Text="Injury Recovery Register"
+                HorizontalOptions="Center"
+                TextColor="SteelBlue"
+                FontSize="35"
+                Margin="0, 20"
+            />
+            <Entry
+                Placeholder="Enter Name"
+                Keyboard="Text"
+                x:Name="name"
+                TextChanged="checkName"
+                />
+            <Entry
+                Placeholder="Enter E-mail"
+                Keyboard="Email"
+                x:Name="email"
+                />
+            <Entry
+                Placeholder="Physio Registration Number"
+                Keyboard="Text"
+                x:Name="pNumber"
+                />
+              <Entry
+                Placeholder="Enter Password"
+                IsPassword="true"
+                x:Name="pass"
+               />
+             <Entry
+                Placeholder="Confirm Password"
+                IsPassword="true"
+                x:Name="conPass"
+              />
+            <Button
+                Text="Pick Payment Plan"
+                Margin="50,30,50,0"
+                BackgroundColor="SteelBlue"
+                TextColor="Black"
+                CornerRadius="10"
+                Clicked="payment"
+             />
+             <Button
+                Text="Confirm"
+                Margin="50,15,50,0"
+                BackgroundColor="SteelBlue"
+                TextColor="Black"
+                CornerRadius="10"
+                Clicked="registerPhysio"
+              />
+        <Button
+                Text="Return to Login"
+                Margin="50,15,50,0"
+                BackgroundColor="SteelBlue"
+                TextColor="Black"
+                CornerRadius="10"
+                Clicked="login"
+              />
+    </StackLayout>
+</ContentPage>
