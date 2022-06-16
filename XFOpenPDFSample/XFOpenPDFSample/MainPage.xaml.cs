@@ -1,4 +1,5 @@
 ﻿using Plugin.XamarinFormsSaveOpenPDFPackage;
+using System;
 using System.IO;
 using System.Net.Http;
 using Xamarin.Forms;
@@ -12,7 +13,7 @@ namespace XFOpenPDFSample
             InitializeComponent();
         }
 
-        async void Button_Clicked(System.Object sender, System.EventArgs e)
+        async void Button_Clicked(Object sender, EventArgs e)
         {
             var httpClient = new HttpClient();
             var stream = await httpClient.GetStreamAsync("https://gerald.verslu.is/subscribe.pdf");
