@@ -10,7 +10,7 @@ namespace TestMediaManager
 {
    // Learn more about making custom code visible in the Xamarin.Forms previewer
    // by visiting https://aka.ms/xamarinforms-previewer
-   [DesignTimeVisible(true)]
+   //[DesignTimeVisible(true)]
    public partial class MainPage : ContentPage
    {
       public MainPage()
@@ -51,13 +51,19 @@ namespace TestMediaManager
          Debug.WriteLine("Current_MediaItemChanged");
       }
 
-   
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+                        //  Source="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" 
+            await CrossMediaManager.Current.Play("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
+        }
 
-      private async void Button_Audio_Clicked(object sender, EventArgs e)
+
+        private async void Button_Audio_Clicked(object sender, EventArgs e)
       {
          //Audio
          //await CrossMediaManager.Current.Play("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3");
-         await CrossMediaManager.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");
+         //await CrossMediaManager.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");
       }
 
       private async void Button_Video_Clicked(object sender, EventArgs e)

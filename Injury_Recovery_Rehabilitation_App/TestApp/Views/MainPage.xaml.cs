@@ -94,8 +94,8 @@ namespace TestApp
             //            {
                             await DisplayAlert("Login Successful", "", "OK");
                             // Attempt to play 'fake' video
-                            //await Navigation.PushModalAsync(new ShowExerciseContent("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", "1", "11", "1", null, 1, 1, 1));
-                            await Navigation.PushAsync(new PhysioMenuScreen("1"));
+                            await Navigation.PushModalAsync(new ShowExerciseContent("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", "1", "11", "1", null, 1, 1, 1));
+                           // await Navigation.PushAsync(new PhysioMenuScreen("1"));
             //            }
             //            else
             //            {

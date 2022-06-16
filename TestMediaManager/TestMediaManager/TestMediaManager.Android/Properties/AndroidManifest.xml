@@ -1,9 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.TestMediaManager" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="31" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	<application android:label="TestMediaManager.Android"></application>
+	<queries>
+		<intent>
+			<action android:name="android.media.action.IMAGE_CAPTURE" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:scheme="smsto" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.SENDTO" />
+			<data android:scheme="mailto" />
+		</intent>
+		<!--START. worth to check these intents, since they taken from another app-->
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:scheme="http" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:scheme="https" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:scheme="lyft" />
+		</intent>
+		<!--FINISH. worth to check these intents, since they taken from another app-->
+	</queries>
+	<application android:label="TestMediaManager.Android"
+				 android:usesCleartextTraffic="true"></application>
 </manifest>

@@ -6,7 +6,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <forms1:VideoView VerticalOptions="FillAndExpand" Source="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" ShowControls="False" />
+            <forms1:VideoView VerticalOptions="FillAndExpand" Source="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" ShowControls="True" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
