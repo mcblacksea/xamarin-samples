@@ -1,7 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/3.0.38">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net6.0-ios;net6.0-android;netstandard2.1</TargetFrameworks>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>  
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems> 
     <LangVersion>10.0</LangVersion>
@@ -12,7 +12,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
- 
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('net6'))  ">
+    <UseMaui>true</UseMaui>
+  </PropertyGroup>
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
