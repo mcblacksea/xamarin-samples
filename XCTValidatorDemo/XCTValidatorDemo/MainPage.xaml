@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="XCTValidatorDemo.MainPage">
+
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="TextColor" Value="Purple" />
+        </Style>
+        <Style x:Key="InvalidStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout VerticalOptions="CenterAndExpand"
+                 Spacing="10"
+                 Padding="15, 0">
+
+        <Label Text="VALIDATORS DEMO"
+               HorizontalOptions="CenterAndExpand"
+               FontSize="30"
+               Margin="0, 0, 0, 50"/>
+
+        <Entry Placeholder="Email"
+               Keyboard="Email">
+            <Entry.Behaviors>
+                <xct:EmailValidationBehavior
+                    x:Name="EmailValidator"
+                    DecorationFlags="Trim"
+                    InvalidStyle="{StaticResource InvalidStyle}" />
+            </Entry.Behaviors>
+        </Entry>
+
+        <Entry x:Name="PasswordEntry" Placeholder="Password">
+            <Entry.Behaviors>
+                <xct:MultiValidationBehavior
+                    x:Name="PasswordValidator"
+                    InvalidStyle="{StaticResource InvalidStyle}">
+                    <xct:TextValidationBehavior MinimumLength="6"  />
+                    <xct:CharactersValidationBehavior CharacterType="Digit" MinimumCharacterCount="1" />
+                    <xct:CharactersValidationBehavior CharacterType="LowercaseLetter" MinimumCharacterCount="1" />
+                    <xct:CharactersValidationBehavior CharacterType="UppercaseLetter" MinimumCharacterCount="1" />
+                    <xct:CharactersValidationBehavior CharacterType="NonAlphanumericSymbol" MinimumCharacterCount="1" />
+                    <xct:CharactersValidationBehavior CharacterType="Whitespace" MaximumCharacterCount="0" />
+                </xct:MultiValidationBehavior>
+            </Entry.Behaviors>
+        </Entry>
+
+        <Entry Placeholder="Repeat Password">
+            <Entry.Behaviors>
+                <xct:RequiredStringValidationBehavior
+                    x:Name="RepeatPasswordValidator"
+                    InvalidStyle="{StaticResource InvalidStyle}"
+                    RequiredString="{Binding Text, Source={x:Reference PasswordEntry}}" />
+            </Entry.Behaviors>
+        </Entry>
+
+        <Button Text="Sign Up"
+                TextColor="White"
+                BackgroundColor="Purple"
+                Clicked="OnSignUpClicked"/>
+
+    </StackLayout>
+
+</ContentPage>
