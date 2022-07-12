@@ -1,5 +1,5 @@
 # xamarin-samples
 ___
 
-Repository with Xamarin code from different public GitHub repositories provided by different authors.  
+Repository with Xamarin samples from numerous of public GitHub repositories created by different authors.  
 Thanks people for doing this!
