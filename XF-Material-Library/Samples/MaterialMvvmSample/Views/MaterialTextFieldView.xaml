@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:viewModels="clr-namespace:MaterialMvvmSample.ViewModels;assembly=MaterialMvvmSample"
+    xmlns:xamForms="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+    x:Class="MaterialMvvmSample.Views.MaterialTextFieldView"
+    x:DataType="viewModels:MaterialTextFieldViewModel">
+    
+    <ScrollView>
+        <StackLayout Orientation="Vertical"
+                     Padding="20">
+            <material:MaterialTextField Placeholder="Auto Capitalization"
+                                        IsAutoCapitalizationEnabled="True" />
+
+            <material:MaterialTextField Placeholder="ALL CAPS"
+                                        IsTextAllCaps="True" />
+
+            <material:MaterialTextField Placeholder="Auto Capitalization AND ALL CAPS"
+                                        IsTextAllCaps="True"
+                                        IsAutoCapitalizationEnabled="true" />
+
+            <StackLayout Orientation="Horizontal">
+                <material:MaterialTextField Placeholder="With Icon"
+                                            LeadingIcon="icon_plus"
+                                            Style="{StaticResource GreenField}"
+                                            HorizontalOptions="FillAndExpand" />
+                <material:MaterialButton Text="OK" HorizontalOptions="Start" />
+            </StackLayout>
+
+            <material:MaterialTextField Placeholder="Choices"
+                                        InputType="Choice"
+                                        Choices="{Binding Choices}" />
+            <material:MaterialTextField Placeholder="Quick single choice"
+                                        InputType="SingleImmediateChoice"
+                                        Choices="{Binding Choices}"/>
+            <material:MaterialTextField Placeholder="Custom command choice"
+                                        Text="Jean Dupond"
+                                        InputType="CommandChoice"
+                                        ChoiceSelectedCommand="{Binding OpenCustomChoiceCommand}" />
+            <material:MaterialDateField Placeholder="Date" />
+            <material:MaterialDateField Placeholder="Date, bottom tip, leading and trailing icons"
+                                        HelperText="Your birthday"
+                                        Date="2020/08/28"
+                                        Format="yyyy/MM/dd">
+                <material:MaterialDateField.LeadingIcon>
+                    <xamForms:SvgImageSource Svg="res:images.slideshow-black-18dp" Height="200" />
+                </material:MaterialDateField.LeadingIcon>
+                <material:MaterialDateField.DropDrownArrowIcon>
+                    <xamForms:SvgImageSource Svg="res:images.slideshow-black-18dp" Height="200" />
+                </material:MaterialDateField.DropDrownArrowIcon>
+            </material:MaterialDateField>
+            <material:MaterialDateField Placeholder="Error"
+                                        ErrorText="some error"
+                                        HasError="True" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
