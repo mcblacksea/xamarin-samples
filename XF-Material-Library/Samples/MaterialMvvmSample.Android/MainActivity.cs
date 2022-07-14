@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.OS;
 using MaterialMvvmSample.Droid.Core;
-using Xamarin.Forms;
 using XF.Material.Droid;
 
 namespace MaterialMvvmSample.Droid
@@ -22,9 +21,9 @@ namespace MaterialMvvmSample.Droid
             var appContainer = new PlatformContainer();
             appContainer.Setup();
 
-            //var app = CommonServiceLocator.ServiceLocator.Current.GetInstance<App>();
+            var app = CommonServiceLocator.ServiceLocator.Current.GetInstance<App>();
 
-            LoadApplication(new App());
+            LoadApplication(app);
         }
 
         public override void OnBackPressed()
