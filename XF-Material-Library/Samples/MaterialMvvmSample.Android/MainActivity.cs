@@ -1,0 +1,35 @@
+﻿using Android.App;
+using Android.OS;
+using MaterialMvvmSample.Droid.Core;
+using Xamarin.Forms;
+using XF.Material.Droid;
+
+namespace MaterialMvvmSample.Droid
+{
+    [Activity(Label = "MaterialMvvmSample", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize, WindowSoftInputMode = Android.Views.SoftInput.AdjustResize)]
+    public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    {
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
+
+            base.OnCreate(savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this);
+            Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Material.Init(this, savedInstanceState);
+
+            var appContainer = new PlatformContainer();
+            appContainer.Setup();
+
+            //var app = CommonServiceLocator.ServiceLocator.Current.GetInstance<App>();
+
+            LoadApplication(new App());
+        }
+
+        public override void OnBackPressed()
+        {
+            Material.HandleBackButton(base.OnBackPressed);
+        }
+    }
+}

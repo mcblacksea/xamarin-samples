@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:BaseMaterialModalPage x:Class="XF.Material.Forms.UI.Dialogs.MaterialLoadingDialog"
+                             xmlns="http://xamarin.com/schemas/2014/forms"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                             xmlns:local="clr-namespace:XF.Material.Forms.UI.Dialogs"
+                             xmlns:material="clr-namespace:XF.Material.Forms.UI"
+                             BackgroundColor="#51000000"
+                             CloseWhenBackgroundIsClicked="False">
+    <ContentPage.Content>
+        <material:MaterialCard x:Name="Container"
+                               Margin="{DynamicResource Material.Dialog.Margin}"
+                               Padding="0"
+                               BackgroundColor="White"
+                               CornerRadius="4"
+                               Elevation="24"
+                               HasShadow="True"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               WidthRequest="{StaticResource Material.Dialog.Width}">
+            <Grid Margin="16,20"
+                  ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="56" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <material:MaterialCircularLoadingView x:Name="LoadingImage"
+                                                      Grid.Column="0"
+                                                      HeightRequest="56"
+                                                      RepeatMode="Infinite"
+                                                      VerticalOptions="Center"
+                                                      WidthRequest="56" />
+                <material:MaterialLabel x:Name="Message"
+                                        Grid.Column="1"
+                                        Text="Lorem ipsum dolor sit amet."
+                                        TextColor="#99000000"
+                                        TypeScale="Body1"
+                                        VerticalOptions="Center" />
+            </Grid>
+        </material:MaterialCard>
+    </ContentPage.Content>
+</local:BaseMaterialModalPage>
