@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Xamarin.AzureCommunicationCalling.iOS</id>
+    <version>2.2.0.1</version>
+    <title>AzureCommunicationCalling for Xamarin.iOS</title>
+    <authors>Laerdal Medical</authors>
+    <owners>Laerdal Medical</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+Naive binding for Azure Communication Calling SDK for iOS.
+
+This nuget is just a binding library for this native iOS library : https://github.com/Azure/Communication/releases
+    </description>
+    <releaseNotes>
+        * Client options diagnostic information.
+            * Application will be able to pass custom 'appName', 'appVersion', and additionally set of 'tags' to the SDK that will be sent with telemetry pipeline.
+        * Fixed crash when an invalid token is provided.
+    </releaseNotes>
+    <copyright>Copyright Laerdal Medical 2020</copyright>
+    <repository type="git" url="https://github.com/laerdal/Xamarin.AzureCommunicationCalling"/>
+    <projectUrl>https://github.com/laerdal/Xamarin.AzureCommunicationCalling</projectUrl>
+    <license type="expression">MIT</license>
+    <tags>Xamarin Azure Communication Services iOS</tags>
+    <dependencies>
+        <group targetFramework="Xamarin.iOS0.0">
+        </group>
+    </dependencies>
+  </metadata>
+  <files>
+      <file src="bin/Release/Xamarin.AzureCommunicationCalling.iOS.dll" target="lib\Xamarin.iOS" />
+      <file src="bin/Release/Xamarin.AzureCommunicationCalling.iOS.pdb" target="lib\Xamarin.iOS" />
+  </files>
+</package>
