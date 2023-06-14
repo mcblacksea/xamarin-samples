@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -13,7 +13,7 @@
         <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.6.0" />
         <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
         <PackageReference Include="Microsoft.Azure.NotificationHubs" Version="4.1.0" />
-        <PackageReference Include="NuGet.Protocol" Version="6.2.2" />
+        <PackageReference Include="NuGet.Protocol" Version="6.2.4" />
         <PackageReference Include="Refit.Newtonsoft.Json" Version="6.3.2" />
         <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.0.13" />
         <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Timer" Version="4.1.0" />
